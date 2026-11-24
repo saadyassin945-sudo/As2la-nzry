@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
+<title>Fundamentals of Nursing QBank</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg1:#0a0f1f;--bg2:#0a0f1f;--bg3:#0a0f1f;--primary:#4fc3f7;--primary-dark:#0288d1;--accent:#ffd54f;--danger:#ef5350;--success:#66bb6a;--text:#e2e8f0;--muted:#a0aec0;--radius:16px;--shadow:0 10px 30px rgba(0,0,0,0.4);--glow:0 0 25px rgba(79,195,247,0.12);--max-width:600px;--bg-card:rgba(255,255,255,0.06);--border-card:rgba(255,255,255,0.06)}
+body.light{--bg1:#fff;--bg2:#fff;--bg3:#fff;--bg-card:#fff;--border-card:#ccc;--text:#000;--muted:#555;--primary:#1565c0;--primary-dark:#0d47a1;--accent:#f9a825;--danger:#c62828;--success:#2e7d32;--shadow:0 2px 8px rgba(0,0,0,0.08);--glow:none;background:#fff!important;background-image:none!important;animation:none!important}
+body{font-family:"Tahoma","Segoe UI","Cairo",sans-serif;background:var(--bg1);min-height:100vh;color:var(--text);display:flex;flex-direction:column;align-items:center;padding:12px 10px;transition:background .4s,color .3s}
+.app{width:100%;max-width:var(--max-width);position:relative;z-index:1}
+.top-header{text-align:center;padding:8px 0 4px}
+.top-header h1{font-size:1.8rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--primary-dark));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+body.light .top-header h1{background:none;-webkit-background-clip:unset;-webkit-text-fill-color:unset;color:#000;text-shadow:none}
+.top-header .sub{font-size:.9rem;color:var(--primary);font-weight:600}
+.top-header .creator{font-size:.7rem;color:var(--muted);margin-top:4px}
+.top-header .creator .name{color:var(--text);font-weight:700}
+body.light .top-header .creator .name{color:#000}
+.theme-toggle-wrap{display:flex;justify-content:flex-end;margin-bottom:6px}
+.theme-toggle{display:flex;background:var(--bg-card);border:1px solid var(--border-card);border-radius:30px;padding:3px;gap:2px}
+.theme-toggle button{background:transparent;border:none;padding:4px 14px;border-radius:30px;font-size:.8rem;color:var(--muted);cursor:pointer;transition:.3s}
+.theme-toggle button.active{background:var(--primary);color:#fff;font-weight:700}
+body.light .theme-toggle button.active{background:#1565c0;color:#fff}
+.card{background:var(--bg-card);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--border-card);border-radius:var(--radius);box-shadow:var(--shadow),var(--glow);padding:16px 14px;margin-bottom:14px;transition:transform .2s,background .3s,border .3s;color:var(--text)}
+body.light .card{background:#fff;border:1px solid #ccc;backdrop-filter:none}
+.card-title{margin:0 0 12px;font-size:1rem;border-inline-start:3px solid var(--primary);padding-inline-start:10px;font-weight:600;display:flex;justify-content:space-between;align-items:center}
+.card-title i{color:var(--accent);margin-left:6px}
+.card-title .select-all-btn{background:rgba(255,255,255,0.06);border:1px solid var(--border-card);color:var(--muted);border-radius:12px;padding:2px 12px;font-size:.7rem;cursor:pointer;transition:.2s;font-weight:600}
+body.light .card-title .select-all-btn{background:#f0f0f0;border-color:#ccc;color:#333}
+.card-title .select-all-btn:hover{background:var(--primary);color:#fff;border-color:var(--primary)}
+.action-icons{display:flex;justify-content:space-around;gap:6px;flex-wrap:wrap}
+.action-icon{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;padding:6px 14px;border-radius:12px;border:1.5px solid transparent;background:transparent;color:var(--muted);font-size:.7rem;font-weight:600;min-width:56px}
+.action-icon .icon{font-size:1.5rem}
+.action-icon .label{font-size:.55rem}
+.action-icon.active{border-color:var(--primary);background:rgba(79,195,247,0.08)}
+body.light .action-icon.active{border-color:#1565c0;background:#e3f2fd}
+.sub-options{display:none;padding:8px 10px;margin-top:6px;background:rgba(0,0,0,0.15);border-radius:12px;border:1px solid var(--border-card);flex-wrap:wrap;gap:6px;justify-content:center}
+body.light .sub-options{background:#f5f5f5;border-color:#ccc}
+.sub-options.show{display:flex}
+.sub-options .action-btn{border:1px solid var(--border-card);background:rgba(255,255,255,0.03);border-radius:12px;padding:5px 16px;font-size:.75rem;font-weight:600;color:var(--muted);cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
+body.light .sub-options .action-btn{background:#fff;border-color:#ccc;color:#333}
+.sub-options .action-btn.active{border-color:var(--primary);background:rgba(79,195,247,0.12);color:var(--text)}
+body.light .sub-options .action-btn.active{border-color:#1565c0;background:#bbdefb;color:#000}
+.section-list{display:flex;flex-direction:column;gap:6px;max-height:320px;overflow-y:auto}
+.section-item{display:flex;align-items:center;justify-content:space-between;border:1px solid var(--border-card);border-radius:10px;padding:10px 12px;cursor:pointer;transition:all .15s;font-size:.85rem;color:var(--text);gap:8px}
+body.light .section-item{border-color:#ccc}
+.section-item.active{border-color:var(--primary);background:rgba(79,195,247,0.08)}
+body.light .section-item.active{border-color:#1565c0;background:#e3f2fd}
+.section-item .sec-title{flex:1;text-align:right;font-weight:600;line-height:1.4}
+.section-item .cnt{background:rgba(255,255,255,0.06);border-radius:30px;padding:2px 10px;font-size:.72rem;color:var(--muted);font-weight:700;min-width:36px;text-align:center}
+body.light .section-item .cnt{background:#ddd;color:#333}
+.section-item .info-btn{background:none;border:none;color:var(--muted);cursor:pointer;font-size:1rem;padding:0 4px}
+.section-item .info-btn:hover{color:var(--primary)}
+#section-explanation{margin-top:12px;padding:16px;background:rgba(0,0,0,0.15);border-radius:var(--radius);border:1px solid var(--border-card);display:none}
+body.light #section-explanation{background:#f5f5f5;border-color:#ccc}
+#section-explanation.show{display:block}
+.explain-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.explain-controls{display:flex;gap:6px;align-items:center}
+.explain-controls .lang-btn{background:rgba(255,255,255,0.06);border:1px solid var(--border-card);color:var(--muted);padding:4px 10px;border-radius:20px;font-size:.7rem;cursor:pointer;font-weight:600}
+body.light .explain-controls .lang-btn{background:#fff;border-color:#ccc;color:#333}
+.explain-controls .lang-btn.active{border-color:var(--primary);background:rgba(79,195,247,0.12);color:var(--text)}
+body.light .explain-controls .lang-btn.active{border-color:#1565c0;background:#bbdefb;color:#000}
+.explain-controls .close-explain{background:none;border:none;color:var(--muted);font-size:1.2rem;cursor:pointer}
+.explain-controls .close-explain:hover{color:var(--danger)}
+#explain-text{font-size:.9rem;line-height:2;color:var(--text);background:rgba(0,0,0,0.1);padding:12px;border-radius:10px;min-height:60px;white-space:pre-wrap}
+#explain-text.en{direction:ltr;text-align:left}
+#explain-text.ar{direction:rtl;text-align:right}
+body.light #explain-text{background:#fff;color:#000;border:1px solid #ccc}
+.big-btn{width:100%;padding:14px;border:none;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;font-size:1rem;font-weight:700;cursor:pointer;box-shadow:0 6px 20px rgba(79,195,247,0.25);transition:all .15s;position:relative;overflow:hidden;margin-bottom:14px}
+body.light .big-btn{background:#1565c0;color:#fff;box-shadow:0 2px 8px rgba(21,101,192,0.3)}
+.big-btn.secondary{background:linear-gradient(135deg,#4a5568,#2d3748)}
+body.light .big-btn.secondary{background:#757575}
+.big-btn.warn{background:linear-gradient(135deg,var(--accent),#f57f17)}
+body.light .big-btn.warn{background:#f9a825;color:#000}
+.big-btn:disabled{opacity:.5;cursor:not-allowed}
+.stats-row{display:flex;justify-content:space-around;gap:8px;text-align:center;margin:6px 0}
+.stats-row .stat .num{font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,var(--primary),#81d4fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+body.light .stats-row .stat .num{background:none;-webkit-background-clip:unset;-webkit-text-fill-color:unset;color:#000}
+.stats-row .stat .lbl{font-size:.7rem;color:var(--muted)}
+.progress-stats{display:flex;align-items:center;gap:16px}
+.progress-ring{position:relative;width:70px;height:70px;flex-shrink:0}
+.progress-ring svg{transform:rotate(-90deg);width:70px;height:70px}
+.progress-ring .bg{fill:none;stroke:var(--border-card);stroke-width:6}
+body.light .progress-ring .bg{stroke:#ccc}
+.progress-ring .fg{fill:none;stroke:var(--primary);stroke-width:6;stroke-linecap:round;stroke-dasharray:176;stroke-dashoffset:176;transition:stroke-dashoffset .6s}
+body.light .progress-ring .fg{stroke:#1565c0}
+.progress-ring .center-text{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:700;color:var(--text)}
+.weak-link{margin-top:10px;font-size:.75rem;color:var(--muted);cursor:pointer;display:flex;align-items:center;gap:6px}
+.weak-link i{color:var(--accent)}
+.action-row-bottom{display:flex;gap:8px;margin-top:10px}
+.action-row-bottom .big-btn{flex:1;font-size:.75rem;padding:8px;margin-top:0;margin-bottom:0}
+#screen-quiz,#screen-results{display:none}
+#screen-quiz.active,#screen-results.active{display:block}
+.quiz-meta{display:flex;justify-content:space-between;align-items:center;font-size:.75rem;color:var(--muted);margin-bottom:8px}
+#timer-badge{font-weight:600;font-size:.8rem;background:rgba(255,255,255,0.05);padding:2px 12px;border-radius:30px;border:1px solid var(--border-card)}
+body.light #timer-badge{background:#f0f0f0;border-color:#ccc}
+#timer-badge.warn{background:rgba(255,213,79,0.15);border-color:var(--accent);color:var(--accent)}
+#timer-badge.danger{background:rgba(239,83,80,0.2);border-color:var(--danger);color:var(--danger);animation:pulse .7s infinite alternate}
+@keyframes pulse{0%{opacity:1}100%{opacity:.5}}
+.progress-wrap{background:rgba(255,255,255,0.06);border-radius:30px;height:4px;overflow:hidden;margin-bottom:12px}
+body.light .progress-wrap{background:#ddd}
+.progress-bar{height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));width:0%;transition:width .3s}
+body.light .progress-bar{background:linear-gradient(90deg,#1565c0,#f9a825)}
+.grid-toggle-btn{background:rgba(255,255,255,0.06);border:1px solid var(--border-card);color:var(--primary);padding:3px 10px;border-radius:20px;font-size:.75rem;cursor:pointer;display:inline-flex;align-items:center;gap:4px;font-weight:600;transition:.2s}
+body.light .grid-toggle-btn{background:#e0f7fa;border-color:#b2ebf2;color:#0077a3}
+.grid-toggle-btn:hover{background:rgba(0,212,255,0.15)}
+#questions-grid-container{margin-bottom:12px;padding:12px;background:rgba(0,0,0,0.2);border-radius:12px;border:1px solid var(--border-card);display:none}
+body.light #questions-grid-container{background:#f8fafc;border-color:#ddd}
+#questions-grid-container.show{display:block}
+.grid-title{font-size:.75rem;color:var(--muted);margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+.q-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(36px,1fr));gap:6px;max-height:160px;overflow-y:auto;padding-right:2px}
+.grid-btn{width:100%;height:34px;display:flex;align-items:center;justify-content:center;border-radius:8px;font-size:.8rem;font-weight:700;border:1px solid var(--border-card);background:rgba(255,255,255,0.03);color:var(--muted);cursor:pointer;transition:all .15s}
+body.light .grid-btn{background:#fff;border-color:#ccc;color:#333}
+.grid-btn:hover{border-color:var(--primary);color:var(--primary)}
+.grid-btn.current{border:2px solid var(--primary)!important;box-shadow:0 0 10px rgba(0,212,255,0.4);font-weight:900}
+.grid-btn.answered-correct{background:rgba(52,211,153,0.15)!important;border-color:var(--success)!important;color:var(--success)!important}
+body.light .grid-btn.answered-correct{background:#e8f5e9!important;border-color:#2e7d32!important;color:#2e7d32!important}
+.grid-btn.answered-wrong{background:rgba(239,83,80,0.15)!important;border-color:var(--danger)!important;color:var(--danger)!important}
+body.light .grid-btn.answered-wrong{background:#ffebee!important;border-color:#c62828!important;color:#c62828!important}
+.q-header{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.q-tag{display:inline-block;background:rgba(79,195,247,0.10);color:var(--primary);font-size:.65rem;font-weight:700;padding:2px 12px;border-radius:30px;border:1px solid rgba(79,195,247,0.06)}
+body.light .q-tag{background:#e3f2fd;color:#1565c0;border-color:#bbdefb}
+.q-en{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:4px;line-height:1.6;direction:ltr;text-align:left;word-wrap:break-word}
+.q-ar{font-size:.9rem;color:var(--muted);margin-bottom:14px;line-height:1.7;direction:rtl;text-align:right;word-wrap:break-word}
+.options{display:flex;flex-direction:column;gap:8px}
+.option{display:flex;align-items:center;gap:8px;border:1px solid var(--border-card);border-radius:12px;padding:10px 14px;cursor:pointer;transition:all .15s;background:rgba(255,255,255,0.02);direction:ltr}
+body.light .option{background:#fff;border-color:#ccc}
+.option .opt-en{font-weight:600;color:var(--text);font-size:.9rem;flex:1;direction:ltr;text-align:left}
+.option .opt-ar{color:var(--muted);font-size:.8rem;direction:rtl;text-align:right;flex:1}
+.option .mark{font-size:1.1rem;width:24px;text-align:center;flex-shrink:0}
+.option.selected{border-color:var(--primary);background:rgba(79,195,247,0.06)}
+body.light .option.selected{border-color:#1565c0;background:#e3f2fd}
+.option.correct{border-color:var(--success);background:rgba(102,187,106,0.08)}
+body.light .option.correct{border-color:#2e7d32;background:#e8f5e9}
+.option.wrong{border-color:var(--danger);background:rgba(239,83,80,0.08)}
+body.light .option.wrong{border-color:#c62828;background:#ffebee}
+.option.disabled{cursor:default;opacity:.8}
+.feedback-box{margin-top:12px;padding:12px;border-radius:12px;font-size:.85rem;line-height:1.6}
+.feedback-box.correct{background:rgba(102,187,106,0.08);border:1px solid rgba(102,187,106,0.15);color:#a7f3d0}
+body.light .feedback-box.correct{background:#e8f5e9;border-color:#2e7d32;color:#000}
+.feedback-box.wrong{background:rgba(239,83,80,0.08);border:1px solid rgba(239,83,80,0.15);color:#fecaca}
+body.light .feedback-box.wrong{background:#ffebee;border-color:#c62828;color:#000}
+.feedback-box .fb-title{font-weight:700;margin-bottom:4px}
+.nav-row{display:flex;gap:8px;margin-top:12px}
+.nav-row .big-btn{flex:1;margin-top:0;margin-bottom:0;font-size:.85rem;padding:10px}
+.score-circle{width:120px;height:120px;border-radius:50%;margin:8px auto 14px;display:flex;align-items:center;justify-content:center;flex-direction:column;background:conic-gradient(var(--primary) calc(var(--pct)*1%),rgba(255,255,255,0.04) 0);position:relative}
+body.light .score-circle{background:conic-gradient(#1565c0 calc(var(--pct)*1%),#e0e0e0 0)}
+.score-circle::before{content:"";position:absolute;width:90px;height:90px;background:var(--bg1);backdrop-filter:blur(4px);border-radius:50%;opacity:.85}
+body.light .score-circle::before{background:#fff;opacity:.9}
+.score-circle .pct{position:relative;font-size:1.8rem;font-weight:900;color:#fff}
+body.light .score-circle .pct{color:#000}
+.score-circle .lbl{position:relative;font-size:.7rem;color:var(--muted)}
+.mistake-item{border:1px solid var(--border-card);border-radius:12px;padding:12px;margin-bottom:10px;background:rgba(255,255,255,0.02)}
+body.light .mistake-item{background:#fff;border-color:#ccc}
+.mistake-item .m-q{font-weight:700;margin-bottom:2px;direction:ltr;text-align:left}
+.mistake-item .m-you{color:var(--danger);font-size:.8rem}
+body.light .mistake-item .m-you{color:#c62828}
+.mistake-item .m-correct{color:var(--success);font-size:.8rem}
+body.light .mistake-item .m-correct{color:#2e7d32}
+.mistake-toggle{background:none;border:1px solid var(--border-card);border-radius:8px;padding:4px 12px;cursor:pointer;color:var(--text);font-size:.75rem;margin-top:6px}
+body.light .mistake-toggle{border-color:#ccc;color:#000}
+.mistake-detail{margin-top:10px;border:1px solid var(--border-card);border-radius:10px;padding:12px;background:rgba(255,255,255,0.03);direction:ltr;text-align:left}
+body.light .mistake-detail{background:#f9f9f9;border-color:#ccc}
+.mistake-detail .opt-row{display:flex;align-items:center;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border-card)}
+body.light .mistake-detail .opt-row{border-color:#ddd}
+.mistake-detail .opt-row:last-child{border-bottom:none}
+.mistake-detail .opt-label{flex:1}
+.mistake-detail .opt-status{font-size:1rem;margin-left:8px}
+.hidden{display:none!important}
+footer{text-align:center;color:var(--muted);font-size:.7rem;margin-top:20px;margin-bottom:8px;opacity:.6}
+footer .name{color:var(--primary);font-weight:700}
+body.light footer .name{color:#1565c0}
+.word-en{display:inline-block;cursor:default;transition:background .15s,transform .1s;padding:1px 2px;border-radius:4px;direction:ltr}
+.word-en:active{background:rgba(79,195,247,0.15);transform:scale(.97)}
+body.light .word-en:active{background:#bbdefb}
+.word-en.speaking{background:rgba(255,213,79,0.25);box-shadow:0 0 10px rgba(255,213,79,0.2)}
+body.light .word-en.speaking{background:#fff9c4}
+.speech-hint{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);color:#fff;padding:6px 18px;border-radius:30px;font-size:.8rem;pointer-events:none;opacity:0;transition:opacity .3s;z-index:999;border:1px solid rgba(255,255,255,0.1)}
+body.light .speech-hint{background:#f0f0f0;color:#000;border-color:#ccc}
+.speech-hint.show{opacity:1}
+.ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,0.25);transform:scale(0);animation:rippleAnim .5s linear;pointer-events:none}
+body.light .ripple{background:rgba(0,0,0,0.1)}
+@keyframes rippleAnim{to{transform:scale(3);opacity:0}}
+@media(max-width:480px){body{padding:8px 6px}.app{max-width:100%}.top-header h1{font-size:1.5rem}.card{padding:12px 10px}.action-icon{padding:4px 8px;min-width:44px}.action-icon .icon{font-size:1.2rem}.q-en{font-size:.9rem}.q-ar{font-size:.8rem}.option{padding:8px 10px}.big-btn{font-size:.85rem;padding:10px}.score-circle{width:100px;height:100px}.score-circle::before{width:75px;height:75px}.score-circle .pct{font-size:1.5rem}.progress-ring{width:56px;height:56px}.progress-ring svg{width:56px;height:56px}}
+.tf-badge{display:inline-block;font-size:.6rem;font-weight:700;padding:1px 8px;border-radius:12px;margin-right:6px;background:rgba(79,195,247,0.15);color:var(--primary)}
+body.light .tf-badge{background:#e3f2fd;color:#1565c0}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="top-header"><h1> استعِن باللَّهِ ولا تعجِزْ ♥️ </h1><div class="sub">Fundamentals of Nursing</div><div class="creator"><i class="fas fa-user-nurse"></i> Created by <span class="name">MR. YASSIN THARWAT</span></div></div>
+<div class="theme-toggle-wrap"><div class="theme-toggle" id="themeToggle"><button class="active" data-theme="dark" onclick="setTheme('dark')"><i class="fas fa-moon"></i></button><button data-theme="light" onclick="setTheme('light')"><i class="fas fa-sun"></i></button></div></div>
+
+<div id="main-screen">
+<div class="card"><div class="card-title"><i class="fas fa-sliders-h"></i> الإجراءات</div>
+<div class="action-icons">
+<div class="action-icon active" data-target="modeOptions" onclick="toggleOptions('modeOptions')"><span class="icon">🎯</span><span class="label">المذاكرة</span></div>
+<div class="action-icon" data-target="orderOptions" onclick="toggleOptions('orderOptions')"><span class="icon">🔀</span><span class="label">الترتيب</span></div>
+<div class="action-icon" data-target="langOptions" onclick="toggleOptions('langOptions')"><span class="icon">🌐</span><span class="label">اللغة</span></div>
+<div class="action-icon" data-target="timerOptions" onclick="toggleOptions('timerOptions')"><span class="icon">⏱️</span><span class="label">المؤقت</span></div>
+</div>
+<div id="modeOptions" class="sub-options show"><button class="action-btn active" data-mode="practice" onclick="selectMode('practice')">تدريب</button><button class="action-btn" data-mode="test" onclick="selectMode('test')">اختبار</button></div>
+<div id="orderOptions" class="sub-options"><button class="action-btn active" data-order="device" onclick="selectOrder('device')">بالترتيب</button><button class="action-btn" data-order="random" onclick="selectOrder('random')">عشوائي</button></div>
+<div id="langOptions" class="sub-options"><button class="action-btn active" data-translate="yes" onclick="selectTranslate('yes')">ترجمة</button><button class="action-btn" data-translate="no" onclick="selectTranslate('no')">EN</button></div>
+<div id="timerOptions" class="sub-options"><button class="action-btn active" data-timer="0" onclick="selectTimer(0)">تثبيت</button><button class="action-btn" data-timer="5" onclick="selectTimer(5)">5s</button><button class="action-btn" data-timer="10" onclick="selectTimer(10)">10s</button></div>
+</div>
+
+<div class="card"><div class="card-title"><span><i class="fas fa-layer-group"></i> الأجزاء المختارة</span><button class="select-all-btn" id="selectAllBtn" onclick="toggleAllSections()">إلغاء الكل</button></div><div id="section-list" class="section-list"></div>
+<div id="section-explanation"><div class="explain-header"><h3 id="explain-title"></h3><div class="explain-controls"><button class="lang-btn active" data-lang="ar" onclick="setExplainLang('ar')">🇪🇬 عربي</button><button class="lang-btn" data-lang="en" onclick="setExplainLang('en')">🇬🇧 English</button><button class="close-explain" onclick="closeExplanation()"><i class="fas fa-times"></i></button></div></div><div id="explain-text" class="ar"></div></div></div>
+
+<button class="big-btn" onclick="startQuiz()"><i class="fas fa-play"></i> ابدأ المذاكرة</button>
+
+<div class="card" id="progressCard"><div class="card-title"><i class="fas fa-chart-line"></i> تقدمك</div>
+<div class="progress-stats"><div class="progress-ring"><svg viewBox="0 0 70 70"><circle class="bg" cx="35" cy="35" r="28"/><circle class="fg" id="progressCircle" cx="35" cy="35" r="28" stroke-dashoffset="176"/></svg><div class="center-text" id="progressPercent">0<small>%</small></div></div>
+<div class="stats-row" style="flex:1;margin:0;"><div class="stat"><div class="num" id="statAttempted">0</div><div class="lbl">تم حله</div></div><div class="stat"><div class="num" id="statCorrect">0</div><div class="lbl">صح</div></div><div class="stat"><div class="num" id="statWrong">0</div><div class="lbl">غلط</div></div></div></div>
+<div class="weak-link" id="weakLink" onclick="startWeakSectionQuiz()"><i class="fas fa-lightbulb"></i> أضعف نقطة: <span id="weakSectionName">-</span> (<span id="weakSectionRate">0%</span>)</div>
+<div class="action-row-bottom"><button class="big-btn warn" onclick="reviewMistakes()"><i class="fas fa-undo-alt"></i> راجع أخطائي</button><button class="big-btn secondary" onclick="resetProgress()"><i class="fas fa-trash-alt"></i> تصفير</button></div></div>
+</div>
+
+<div id="screen-quiz">
+<div class="quiz-meta">
+  <span id="quiz-position"><i class="fas fa-question-circle"></i> 1 / 10</span>
+  <span id="timer-badge" class="hidden"><i class="fas fa-hourglass-half"></i> 30</span>
+  <span id="quiz-score"><i class="fas fa-check-circle" style="color:var(--success);"></i> 0 <i class="fas fa-times-circle" style="color:var(--danger);margin-right:6px;"></i> 0</span>
+</div>
+<div class="progress-wrap"><div class="progress-bar" id="progress-bar"></div></div>
+
+<div id="questions-grid-container">
+  <div class="grid-title">
+    <span><i class="fas fa-th"></i> انتقل مباشرة لأي سؤال:</span>
+    <span style="font-size:0.65rem; color:var(--muted);"><span style="color:var(--success);">صح</span> | <span style="color:var(--danger);">غلط</span></span>
+  </div>
+  <div class="q-grid" id="q-grid-buttons"></div>
+</div>
+
+<div class="card">
+  <div class="q-header">
+    <div class="q-tag" id="q-section-tag"><i class="fas fa-tag"></i> الجزء</div>
+    <div style="display:flex;gap:6px;align-items:center;">
+      <button class="grid-toggle-btn" id="btn-toggle-trans" onclick="toggleQuizTranslation()"><i class="fas fa-language"></i> ترجمة</button>
+      <button class="grid-toggle-btn" id="btn-toggle-grid" onclick="toggleQuestionsGrid()"><i class="fas fa-th-large"></i> شبكة الأسئلة</button>
+    </div>
+  </div>
+  <div class="q-en" id="q-en"></div>
+  <div class="q-ar" id="q-ar"></div>
+  <div class="options" id="options"></div>
+  <div id="feedback" class="feedback-box hidden"></div>
+  <div class="nav-row">
+    <button class="big-btn secondary" id="btn-quit" onclick="quitQuiz()" style="flex:0 0 60px;"><i class="fas fa-sign-out-alt"></i></button>
+    <button class="big-btn secondary" id="btn-prev" onclick="previousQuestion()" disabled><i class="fas fa-arrow-right"></i></button>
+    <button class="big-btn" id="btn-next" onclick="nextQuestion()" disabled><i class="fas fa-arrow-left"></i> التالي</button>
+  </div>
+</div>
+</div>
+
+<div id="screen-results"><div class="card" style="text-align:center;"><div class="card-title" style="border:none;text-align:center;padding:0;"><i class="fas fa-trophy" style="color:var(--accent);"></i> نتيجتك</div><div class="score-circle" id="score-circle" style="--pct:0;"><div class="pct" id="result-pct">0%</div><div class="lbl">النسبة</div></div><div class="stats-row"><div class="stat"><div class="num" id="res-total">0</div><div class="lbl">إجمالي</div></div><div class="stat"><div class="num" id="res-correct" style="color:var(--success);">0</div><div class="lbl">صح</div></div><div class="stat"><div class="num" id="res-wrong" style="color:var(--danger);">0</div><div class="lbl">غلط</div></div></div><button class="big-btn" onclick="goHome()"><i class="fas fa-home"></i> الرئيسية</button><button class="big-btn warn hidden" id="btn-show-mistakes" onclick="showMistakesList()"><i class="fas fa-list-ul"></i> الأخطاء</button></div><div id="mistakes-list-wrap" class="card hidden"><div class="card-title"><i class="fas fa-exclamation-triangle" style="color:var(--danger);"></i> أخطائك</div><div id="mistakes-list"></div></div></div>
+
+<div id="speech-hint" class="speech-hint"><i class="fas fa-volume-up"></i> جارٍ النطق...</div>
+<footer>Created by <span class="name">MR. YASSIN THARWAT</span></footer>
+</div>
+
+<script>
+function M(en, ar, pairs, c, explain_ar) {
+  var q = {
+    en: en,
+    ar: ar || "",
+    options: pairs.map(function (p) {
+      var pts = p.split("|");
+      return { en: pts[0], ar: pts[1] || "", correct: false };
+    }),
+    explain_ar: explain_ar || ""
+  };
+  if (q.options[c]) q.options[c].correct = true;
+  return q;
+}
+function T(en, ar, isTrue, explain_ar) {
+  return { en: en, ar: ar || "", isTF: true, correct: !!isTrue, explain_ar: explain_ar || "" };
+}
+
+const ORIGINAL_BANK = [
+  {
+    name: "الجزء 1: السوائل والكهارل (Fluids & Electrolytes)",
+    nameEn: "الجزء 1 - Fluids & Electrolytes",
+    questions: [
+      M("What percentage of a typical adult's weight consists of fluid?","ما نسبة السوائل من وزن الشخص البالغ الطبيعي؟",["40%|40%","50%|50%","60%|60%","70%|70%"],2,"تُشكّل السوائل نحو 60% من وزن الجسم لدى الشخص البالغ الطبيعي."),
+      M("Which fluid compartment contains the largest amount of body fluid?","أي حيّز (حجرة) للسوائل يحتوي على أكبر كمية من سوائل الجسم؟",["Intravascular fluid|السائل داخل الأوعية الدموية","Interstitial fluid|السائل الخلالي","Intracellular fluid|السائل داخل الخلايا","Transcellular fluid|السائل عبر الخلايا"],2,"يُشكّل السائل داخل الخلايا (ICF) حوالي ثلثي إجمالي ماء الجسم."),
+      M("Which of the following is a function of body fluid?","أي مما يلي يُعد من وظائف سوائل الجسم؟",["Transporting nutrients to cells|نقل المغذيات إلى الخلايا","Maintaining acid-base balance|الحفاظ على التوازن الحمضي القاعدي","Assisting in heat regulation|المساعدة في تنظيم حرارة الجسم","All of the above|جميع ما سبق"],3,"تعمل سوائل الجسم على نقل المغذيات للخلايا، والحفاظ على التوازن الحمضي القاعدي، والمساعدة في تنظيم درجة حرارة الجسم."),
+      M("Intravascular fluid represents approximately what percentage of body fluid?","ما النسبة التقريبية التي يمثلها السائل داخل الأوعية الدموية من سوائل الجسم؟",["7%|7%","27%|27%","40%|40%","60%|60%"],0,"يمثل السائل داخل الأوعية الدموية (البلازما) نحو 7% من سوائل الجسم (حوالي 3 لترات)."),
+      M("Interstitial fluid is approximately how many liters in the adult?","كم لتراً يبلغ حجم السائل الخلالي تقريباً لدى البالغ؟",["3 liters|3 لترات","5 liters|5 لترات","8 liters|8 لترات","12 liters|12 لتراً"],2,"يُقدّر حجم السائل الخلالي بنحو 8 لترات لدى البالغ."),
+      M("What is the average daily oral fluid intake for an adult?","ما متوسط المدخول اليومي من السوائل عن طريق الفم لدى البالغ؟",["500–800 mL|500–800 مل","1,200–1,500 mL|1,200–1,500 مل","2,000–2,500 mL|2,000–2,500 مل","3,000–3,500 mL|3,000–3,500 مل"],1,"يبلغ متوسط السوائل المتناولة يومياً عن طريق الفم 1,200–1,500 مل (بينما يبلغ إجمالي السوائل الداخلة مع الطعام والأيض نحو 2,500 مل)."),
+      M("Which route accounts for the largest amount of daily fluid output?","أي مسار يُمثّل الكمية الأكبر من إخراج السوائل اليومي؟",["Urine|البول","Lungs|الرئتان","Skin|الجلد","Feces|البراز"],0,"يُعد البول المسار الرئيسي الذي يمثل النسبة الأكبر من فقدان السوائل اليومي."),
+      M("Which hormone regulates primarily fluid intake by the thirst mechanism?","أي هرمون ينظم بشكل أساسي مدخول السوائل عبر آلية العطش؟",["Aldosterone|الألدوستيرون","ADH|الهرمون المضاد لإدرار البول (ADH)","ANP|الببتيد الأذيني المدر للصوديوم (ANP)","Calcitonin|الكالسيتونين"],1,"يزيد الهرمون المضاد لإدرار البول (ADH) من إعادة امتصاص الماء في الكلى ويرتبط بتنظيم السوائل وآلية العطش."),
+      M("Which hormone increases sodium retention in the distal nephron?","أي هرمون يزيد من احتباس الصوديوم في الكليون (النفرون) البعيد؟",["ADH|الهرمون المضاد لإدرار البول (ADH)","Aldosterone|الألدوستيرون","ANP|الببتيد الأذيني المدر للصوديوم (ANP)","Parathormone|هرمون جارات الدرقية (الباراثورمون)"],1,"يعزز الألدوستيرون احتباس الصوديوم (وبالتالي الماء) في الأنبوب الكلوي البعيد."),
+      M("Which hormone promotes sodium excretion and inhibits the thirst mechanism?","أي هرمون يعزز إطراح (إخراج) الصوديوم ويثبط آلية العطش؟",["Aldosterone|الألدوستيرون","ADH|الهرمون المضاد لإدرار البول (ADH)","ANP|الببتيد الأذيني المدر للصوديوم (ANP)","Renin|الرينين"],2,"يعزز الببتيد الأذيني المدر للصوديوم (ANP) إطراح الصوديوم في البول ويثبط آلية العطش."),
+      T("Approximately 60% of a typical adult's weight consists of fluid.","يتكون حوالي 60% من وزن البالغ الطبيعي من سوائل.",1,"صواب."),
+      T("Intracellular fluid (ICF) constitutes about two-thirds of total body water.","يشكل السائل داخل الخلايا (ICF) حوالي ثلثي إجمالي ماء الجسم.",1,"صواب."),
+      T("Extracellular fluid (ECF) is lost from the body more rapidly than intracellular fluid.","يُفقد السائل خارج الخلايا (ECF) من الجسم بسرعة أكبر من السائل داخل الخلايا.",1,"صواب."),
+      T("Intravascular fluid is approximately 3 liters in the adult.","يبلغ حجم السائل داخل الأوعية الدموية نحو 3 لترات لدى البالغ.",1,"صواب."),
+      T("Interstitial fluid surrounds the blood vessels and includes lymph and cerebrospinal fluid.","يحيط السائل الخلالي بالأوعية الدموية ويشمل اللمف والسائل الدماغي الشوكي.",1,"صواب."),
+      T("The average adult needs about 2,500 mL of fluid per day.","يحتاج البالغ المتوسط إلى حوالي 2,500 مل من السوائل يومياً.",1,"صواب."),
+      T("Insensible fluid loss occurs through the skin and lungs.","يحدث فقدان السوائل غير المحسوس عبر الجلد والرئتين.",1,"صواب."),
+      T("The kidneys regulate fluid output primarily through urine formation.","تنظم الكلى إخراج السوائل بشكل أساسي من خلال تكوين البول.",1,"صواب."),
+      T("Antidiuretic hormone (ADH) increases water reabsorption in the collecting duct.","يزيد الهرمون المضاد لإدرار البول (ADH) من إعادة امتصاص الماء في القناة الجامعة.",1,"صواب."),
+      T("Aldosterone promotes sodium retention in the distal nephron.","يعزز الألدوستيرون احتباس الصوديوم في الكليون (النفرون) البعيد.",1,"صواب."),
+      T("Atrial natriuretic peptide (ANP) promotes sodium retention and stimulates thirst.","يعزز الببتيد الأذيني المدر للصوديوم (ANP) احتباس الصوديوم ويحفز العطش.",0,"خطأ: يعزز الببتيد الأذيني المدر للصوديوم (ANP) إطراح الصوديوم ويثبط آلية العطش."),
+      T("Parathormone is important for calcium and phosphorus balance.","يُعد هرمون جارات الدرقية (الباراثورمون) مهماً لتوازن الكالسيوم والفوسفور.",1,"صواب."),
+      T("Only about 200 mL of water is excreted daily in fecal material.","يُطرح حوالي 200 مل فقط من الماء يومياً في البراز.",1,"صواب."),
+      M("Which of the following is a cation?","أي مما يلي يُعد كاتيوناً (أيوناً موجب الشحنة)؟",["Chloride|الكلوريد","Bicarbonate|البيكربونات","Sodium|الصوديوم","Phosphate|الفوسفات"],2,"الصوديوم (Na⁺) أيون موجب الشحنة (كاتيون)، بينما الكلوريد والبيكربونات والفوسفات أنيونات سالبة الشحنة."),
+      M("Which of the following is an anion?","أي مما يلي يُعد أنيوناً (أيوناً سالب الشحنة)؟",["Potassium|البوتاسيوم","Calcium|الكالسيوم","Magnesium|المغنيسيوم","Chloride|الكلوريد"],3,"الكلوريد (Cl⁻) أيون سالب الشحنة (أنيون)، بينما البوتاسيوم والكالسيوم والمغنيسيوم كاتيونات موجبة الشحنة."),
+      M("Which electrolyte is the most abundant cation in the extracellular fluid?","أي كهرل يُعد الكاتيون الأكثر وفرة في السائل خارج الخلايا؟",["Potassium|البوتاسيوم","Sodium|الصوديوم","Calcium|الكالسيوم","Magnesium|المغنيسيوم"],1,"الصوديوم هو الكاتيون الرئيسي والأكثر وفرة في السائل خارج الخلايا."),
+      M("Which electrolyte is the major cation in the intracellular fluid?","أي كهرل يُعد الكاتيون الرئيسي في السائل داخل الخلايا؟",["Sodium|الصوديوم","Potassium|البوتاسيوم","Calcium|الكالسيوم","Magnesium|المغنيسيوم"],1,"البوتاسيوم هو الكاتيون الرئيسي داخل الخلايا."),
+      M("What is the normal serum sodium range?","ما المعدل الطبيعي لمستوى الصوديوم في المصل؟",["3.5–5 mEq/L|3.5–5 ملي مكافئ/لتر","8.5–10.5 mg/dL|8.5–10.5 ملغ/ديسيلتر","135–145 mEq/L|135–145 ملي مكافئ/لتر","2.5–4.5 mg/dL|2.5–4.5 ملغ/ديسيلتر"],2,"المعدل الطبيعي لصوديوم المصل هو 135–145 ملي مكافئ/لتر (mEq/L)."),
+      M("What is the normal serum potassium range?","ما المعدل الطبيعي لمستوى البوتاسيوم في المصل؟",["1.3–2.1 mEq/L|1.3–2.1 ملي مكافئ/لتر","3.5–5 mEq/L|3.5–5 ملي مكافئ/لتر","8.5–10.5 mg/dL|8.5–10.5 ملغ/ديسيلتر","135–145 mEq/L|135–145 ملي مكافئ/لتر"],1,"المعدل الطبيعي لبوتاسيوم المصل هو 3.5–5 ملي مكافئ/لتر (mEq/L)."),
+      M("Which electrolyte is essential for blood clotting and enzyme activation?","أي كهرل يُعد ضرورياً لتخثر الدم وتنشيط الإنزيمات؟",["Sodium|الصوديوم","Potassium|البوتاسيوم","Calcium|الكالسيوم","Phosphorus|الفوسفور"],2,"الكالسيوم ضروري لتخثر الدم، وتنشيط الإنزيمات، وانقباض العضلات، ونقل السيال العصبي."),
+      M("Which electrolyte is the major anion in the intracellular fluid?","أي كهرل يُعد الأنيون الرئيسي في السائل داخل الخلايا؟",["Chloride|الكلوريد","Bicarbonate|البيكربونات","Phosphate|الفوسفات","Sulfate|الكبريتات"],2,"الفوسفات هو الأنيون الرئيسي داخل الخلايا."),
+      M("What is the normal serum magnesium range?","ما المعدل الطبيعي لمستوى المغنيسيوم في المصل؟",["1.3–2.1 mEq/L|1.3–2.1 ملي مكافئ/لتر","2.5–4.5 mg/dL|2.5–4.5 ملغ/ديسيلتر","3.5–5 mEq/L|3.5–5 ملي مكافئ/لتر","8.5–10.5 mg/dL|8.5–10.5 ملغ/ديسيلتر"],0,"المعدل الطبيعي لمغنيسيوم المصل هو 1.3–2.1 ملي مكافئ/لتر (mEq/L)."),
+      M("Which hormone promotes calcium retention and phosphate excretion?","أي هرمون يعزز احتباس الكالسيوم وإطراح الفوسفات؟",["Calcitonin|الكالسيتونين","Parathormone|هرمون جارات الدرقية (الباراثورمون)","Aldosterone|الألدوستيرون","ADH|الهرمون المضاد لإدرار البول (ADH)"],1,"يرفع هرمون جارات الدرقية (الباراثورمون) مستوى الكالسيوم في الدم عبر تعزيز احتباسه وإطراح الفوسفات."),
+      M("Which hormone promotes calcium excretion and phosphate excretion?","أي هرمون يعزز إطراح كلٍ من الكالسيوم والفوسفات؟",["Parathormone|هرمون جارات الدرقية (الباراثورمون)","Calcitonin|الكالسيتونين","Aldosterone|الألدوستيرون","ANP|الببتيد الأذيني المدر للصوديوم (ANP)"],1,"يعزز الكالسيتونين إطراح الكالسيوم والفوسفات عبر الكلى لخفض مستوى الكالسيوم في الدم."),
+      T("Sodium is the major cation in the intracellular fluid.","الصوديوم هو الكاتيون الرئيسي في السائل داخل الخلايا.",0,"خطأ: الصوديوم هو الكاتيون الرئيسي في السائل خارج الخلايا، أما البوتاسيوم فهو الرئيسي داخل الخلايا."),
+      T("Potassium is the major cation in the extracellular fluid.","البوتاسيوم هو الكاتيون الرئيسي في السائل خارج الخلايا.",0,"خطأ: البوتاسيوم هو الكاتيون الرئيسي في السائل داخل الخلايا."),
+      T("The normal serum sodium range is 135–145 mEq/L.","المعدل الطبيعي للصوديوم في المصل هو 135–145 ملي مكافئ/لتر.",1,"صواب."),
+      T("The normal serum potassium range is 3.5–5 mEq/L.","المعدل الطبيعي للبوتاسيوم في المصل هو 3.5–5 ملي مكافئ/لتر.",1,"صواب."),
+      T("Calcium and phosphorus have a direct relationship in the body.","توجد علاقة طردية مباشرة بين الكالسيوم والفوسفور في الجسم.",0,"خطأ: العلاقة بين الكالسيوم والفوسفور في الدم علاقة عكسية (Inverse relationship)."),
+      T("More than 99% of calcium is combined with phosphorus and concentrated in the skeletal system.","يتحد أكثر من 99% من الكالسيوم مع الفوسفور ويتركز في الجهاز الهيكلي (العظمي).",1,"صواب."),
+      T("Magnesium is the second most abundant cation in the intracellular fluid.","المغنيسيوم هو ثاني أكثر الكاتيونات وفرة في السائل داخل الخلايا.",1,"صواب."),
+      T("The normal serum calcium range is 8.5–10.5 mg/dL.","المعدل الطبيعي للكالسيوم في المصل هو 8.5–10.5 ملغ/ديسيلتر.",1,"صواب."),
+      T("Phosphorus is the major anion in the extracellular fluid.","الفوسفور هو الأنيون الرئيسي في السائل خارج الخلايا.",0,"خطأ: الفوسفور (على هيئة فوسفات) هو الأنيون الرئيسي في السائل داخل الخلايا."),
+      T("The kidneys are responsible for approximately 90% of phosphorus excretion.","تُعد الكلى مسؤولة عن إطراح نحو 90% من الفوسفور.",1,"صواب."),
+      M("Which of the following is a risk factor for fluid volume deficit?","أي مما يلي يُعد من عوامل الخطر لنقص حجم السوائل؟",["Overuse of diuretics|الإفراط في استخدام مدرات البول","Inability to swallow|عدم القدرة على البلع","Increased vomiting and fever|زيادة القيء والحمى","All of the above|جميع ما سبق"],3,"يؤدي الإفراط في مدرات البول، وصعوبة البلع، والقيء والحمى إلى زيادة فقدان السوائل أو نقص مدخولها مما يسبب نقص حجم السوائل."),
+      M("Which of the following is an objective finding in fluid volume deficit?","أي مما يلي يُعد علامة موضوعية (سريرية) في نقص حجم السوائل؟",["Bounding pulse|نبض قافز (ممتلئ وقوي)","Crackles in the lungs|خراخر في الرئتين","Oliguria with high specific gravity|شح (قلة) البول مع ارتفاع الكثافة النوعية","Engorged neck veins|احتقان (تمدد) أوردة الرقبة"],2,"يسبب نقص حجم السوائل قلة البول وتركيزه (ارتفاع الكثافة النوعية)، بينما النبض القافز والخراخر واحتقان أوردة الرقبة من علامات زيادة حجم السوائل."),
+      M("Which of the following is a subjective finding in fluid volume excess?","أي مما يلي يُعد عرضاً ذاتياً (يشعر به المريض) في زيادة حجم السوائل؟",["Thirst|العطش","Dizziness|الدوخة","Dyspnea|ضيق التنفس (الزلة التنفسية)","Abdominal cramps|مغص (تقلصات) البطن"],2,"ضيق التنفس (Dyspnea) من الأعراض الذاتية الشائعة في زيادة حجم السوائل نتيجة احتقان الرئتين."),
+      M("Which of the following is a sign of fluid volume excess?","أي مما يلي يُعد علامة على زيادة حجم السوائل؟",["Sunken eyes|غؤور العينين","Decreased skin turgor|انخفاض مرونة (امتلاء) الجلد","Pitting edema|وذمة منطبعة (تترك أثراً بالضغط)","Furrowed tongue|لسان متشقق"],2,"الوذمة المنطبعة علامة مميزة لاحتباس وزيادة السوائل، بينما غؤور العينين وانخفاض مرونة الجلد وتشقق اللسان من علامات الجفاف ونقص السوائل."),
+      M("Which laboratory finding is expected in fluid volume deficit?","أي نتيجة مخبرية يُتوقع ظهورها في نقص حجم السوائل؟",["Decreased hematocrit|انخفاض الهيماتوكريت (مكداس الدم)","Increased BUN|ارتفاع نيتروجين يوريا الدم (BUN)","Decreased specific gravity of urine|انخفاض الكثافة النوعية للبول","Decreased BUN|انخفاض نيتروجين يوريا الدم (BUN)"],1,"يؤدي تركز الدم في نقص حجم السوائل إلى ارتفاع نيتروجين يوريا الدم (BUN) والهيماتوكريت وارتفاع الكثافة النوعية للبول."),
+      M("Chvostek's sign and Trousseau's sign are associated with:","ترتبط علامة شوفوستيك وعلامة تروسو بـ:",["Hypokalemia|نقص بوتاسيوم الدم","Hyperkalemia|فرط بوتاسيوم الدم","Hypocalcemia|نقص كالسيوم الدم","Hypercalcemia|فرط كالسيوم الدم"],2,"تُعد علامتا شوفوستيك وتروسو من العلامات السريرية المميزة لتهيج الأعصاب العضلي في نقص كالسيوم الدم (Hypocalcemia)."),
+      M("Peaked T waves on ECG are associated with:","ترتبط موجات T المؤنفة (المدببة المرتفعة) في تخطيط كهربائية القلب بـ:",["Hypokalemia|نقص بوتاسيوم الدم","Hyperkalemia|فرط بوتاسيوم الدم","Hypocalcemia|نقص كالسيوم الدم","Hypercalcemia|فرط كالسيوم الدم"],1,"يُظهر فرط بوتاسيوم الدم (Hyperkalemia) موجات T مؤنفة ومرتفعة على تخطيط كهربائية القلب (ECG)."),
+      M("Flat or inverted T waves and depressed ST segment are associated with:","ترتبط موجات T المسطحة أو المقلوبة وانخفاض قطعة ST في تخطيط القلب بـ:",["Hypokalemia|نقص بوتاسيوم الدم","Hyperkalemia|فرط بوتاسيوم الدم","Hypercalcemia|فرط كالسيوم الدم","Hyponatremia|نقص صوديوم الدم"],0,"يُسبب نقص بوتاسيوم الدم (Hypokalemia) تسطح أو انقلاب موجة T وانخفاض قطعة ST."),
+      M("Which of the following is a clinical manifestation of hypercalcemia?","أي مما يلي يُعد مظهراً سريرياً لفرط كالسيوم الدم؟",["Tetany|التكزز (التشنج التكززي)","Carpopedal spasm|التشنج الرسغي القدمي","Pathologic fracture|كسر مرضي","Convulsions|اختلاجات (تشنجات)"],2,"تُعد الكسور المرضية من مظاهر فرط كالسيوم الدم (بسبب ارتشاف الكالسيوم من العظام)، بينما التكزز والتشنج الرسغي القدمي والاختلاجات من علامات نقص الكالسيوم."),
+      T("Fluid volume deficit can be caused by excessive output such as vomiting and prolonged diarrhea.","يمكن أن ينتج نقص حجم السوائل عن الإخراج المفرط للسوائل مثل القيء والإسهال المطول.",1,"صواب."),
+      T("Oliguria and high specific gravity of urine are objective findings in fluid volume deficit.","يُعد شح البول وارتفاع الكثافة النوعية للبول من العلامات الموضوعية في نقص حجم السوائل.",1,"صواب."),
+      T("Fluid volume excess is most commonly caused by an increase in sodium.","تحدث زيادة حجم السوائل في الغالب بسبب زيادة احتباس الصوديوم.",1,"صواب."),
+      T("A sudden weight gain of 5 lb is a sign of fluid volume excess.","تُعد الزيادة المفاجئة في الوزن بمقدار 5 أرطال (نحو 2.3 كجم) علامة على زيادة حجم السوائل.",1,"صواب."),
+      T("Crackles in the lungs and bounding pulse are signs of fluid volume deficit.","تُعد الخراخر الرئوية والنبض القافز من علامات نقص حجم السوائل.",0,"خطأ: الخراخر الرئوية والنبض القافز من علامات زيادة حجم السوائل (Fluid volume excess)."),
+      T("Hyponatremia is a sodium level less than 135 mEq/L.","نقص صوديوم الدم هو انخفاض مستوى الصوديوم في المصل إلى أقل من 135 ملي مكافئ/لتر.",1,"صواب."),
+      T("Hyperkalemia is a serum potassium level greater than 5.0 mEq/L.","فرط بوتاسيوم الدم هو ارتفاع مستوى البوتاسيوم في المصل إلى أكثر من 5.0 ملي مكافئ/لتر.",1,"صواب.")
+    ]
+  },
+  {
+    name: "الجزء 2: العلامات الحيوية (Vital Signs)",
+    nameEn: "الجزء 2 - Vital Signs",
+    questions: [
+      M("Which of the following is considered the fifth vital sign?","أي مما يلي يُعد العلامة الحيوية الخامسة؟",["Temperature|درجة الحرارة","Pain|الألم","Pulse|النبض","Respiration|التنفس"],1,"يُعد الألم (Pain) العلامة الحيوية الخامسة التي يجب تقييمها إلى جانب العلامات الحيوية الأربع التقليدية."),
+      M("Core body temperature remains relatively constant at:","تبقى درجة حرارة الجسم الأساسية (الداخلية) ثابتة نسبياً عند:",["35°C|35° مئوية","36°C|36° مئوية","37°C|37° مئوية","38°C|38° مئوية"],2,"تبقى درجة الحرارة الداخلية الأساسية للجسم ثابتة نسبياً عند 37° مئوية."),
+      M("Which of the following is a method of heat loss from the body?","أي مما يلي يُعد من طرق فقدان الحرارة من الجسم؟",["Conduction|التوصيل","Convection|الحمل الحراري","Evaporation|التبخر","All of the above|جميع ما سبق"],3,"يفقد الجسم الحرارة عبر التوصيل والحمل الحراري والتبخر (بالإضافة إلى الإشعاع)."),
+      M("Which of the following increases heat production in the body?","أي مما يلي يزيد من إنتاج الحرارة في الجسم؟",["Decreased metabolic rate|انخفاض معدل الأيض","Muscle activity|النشاط العضلي","Decreased thyroxin output|انخفاض إفراز هرمون الثيروكسين","Sleep|النوم"],1,"يزيد النشاط العضلي (مثل التمرين الرياضي والارتعاش) من إنتاج الحرارة في الجسم."),
+      M("Which of the following is a factor affecting body temperature?","أي مما يلي يُعد من العوامل المؤثرة في درجة حرارة الجسم؟",["Age|العمر","Diurnal variations|التغيرات اليومية (النهارية الليلية)","Exercise|التمرين الرياضي","All of the above|جميع ما سبق"],3,"تؤثر كل من المرحلة العمرية والتغيرات اليومية والنشاط البدني في درجة حرارة الجسم."),
+      M("When measuring oral temperature, which of the following is a contraindication?","أي مما يلي يُعد مانعاً لقياس درجة الحرارة عن طريق الفم؟",["A child under 6 years|طفل دون سن 6 سنوات","An unconscious patient|مريض فاقد للوعي","A patient receiving oxygen > 6 L/min|مريض يتلقى الأكسجين بمعدل يزيد عن 6 لترات/دقيقة","All of the above|جميع ما سبق"],3,"يُمنع قياس الحرارة الفموية للأطفال دون 6 سنوات، ولفاقدي الوعي، ولمن يتلقون أكسجين بمعدل > 6 لترات/دقيقة."),
+      M("Which of the following is an indication for taking an axillary temperature?","أي مما يلي يُعد من دواعي قياس درجة الحرارة من الإبط؟",["A mouth-breathing patient|مريض يتنفس عن طريق الفم","A patient with oral inflammation or oral surgery|مريض يعاني من التهاب أو جراحة في الفم","A patient for whom oral and rectal routes are contraindicated|مريض يُمنع له القياس الفموي والشرجي","All of the above|جميع ما سبق"],3,"يُناسب القياس الإبطي مرضى التنفس الفموي أو التهابات وجراحات الفم أو عند تعذر القياس الفموي والشرجي."),
+      M("Which of the following is an indication for taking a rectal temperature?","أي مما يلي يُعد من دواعي قياس درجة الحرارة عن طريق المستقيم؟",["Infants and young children|الرضع والأطفال الصغار","Unconscious patients|المرضى فاقدو الوعي","When greater accuracy is desired|عند الحاجة إلى دقة أكبر","All of the above|جميع ما سبق"],3,"يُستخدم القياس المستقيمي (الشرجي) لفاقدي الوعي والأطفال الصغار وعند الحاجة لدقة أكبر (مع مراعاة موانعه)."),
+      M("Which of the following is an advantage of the aural (tympanic) temperature route?","أي مما يلي يُعد من مزايا قياس درجة الحرارة عن طريق الأذن (غشاء الطبل)؟",["Instantaneous results|نتائج فورية","Easy to use|سهولة الاستخدام","Comfortable for the patient|مريح للمريض","All of the above|جميع ما سبق"],3,"يمتاز قياس الحرارة الطبلي بسرعة ظهور النتائج وسهولة الاستخدام والراحة للمريض."),
+      M("Which of the following is a clinical sign of fever?","أي مما يلي يُعد علامة سريرية للحمى (ارتفاع درجة الحرارة)؟",["Increased heart rate|زيادة معدل ضربات القلب","Shivering|القشعريرة (الارتعاش)","Increased respiratory rate|زيادة معدل التنفس","All of the above|جميع ما سبق"],3,"تُسبب الحمى تسارع ضربات القلب، وزيادة معدل التنفس، والقشعريرة."),
+      M("Which of the following is a nursing intervention for a patient with hyperthermia?","أي مما يلي يُعد تدخلاً تمريضياً لمريض يعاني من فرط الحرارة؟",["Remove excess blankets|إزالة الأغطية الزائدة","Administer antipyretics as ordered|إعطاء خافضات الحرارة حسب الوصفة الطبية","Measure intake and output|قياس السوائل الداخلة والخارجة","All of the above|جميع ما سبق"],3,"تشمل التدخلات التمريضية إزالة الأغطية الزائدة، وإعطاء خافضات الحرارة الموصوفة، ومراقبة توازن السوائل الداخلة والخارجة."),
+      M("Which of the following groups is at risk for hypothermia?","أي من الفئات التالية أكثر عرضة لخطر انخفاض حرارة الجسم؟",["Elderly people|كبار السن","Children and infants|الأطفال والرضع","Alcoholics|المصابون بإدمان الكحول","All of the above|جميع ما سبق"],3,"يُعد كبار السن والرضع والأطفال والمصابون بإدمان الكحول من الفئات الأكثر عرضة لانخفاض حرارة الجسم."),
+      M("Which of the following is a clinical sign of hypothermia?","أي مما يلي يُعد علامة سريرية لانخفاض حرارة الجسم؟",["Increased heart rate|زيادة معدل ضربات القلب","Hypertension|ارتفاع ضغط الدم","Decreased body temperature, pulse, and respiration|انخفاض درجة حرارة الجسم ومعدل النبض والتنفس","Increased urinary output|زيادة إدرار البول"],2,"يؤدي انخفاض حرارة الجسم إلى تباطؤ العمليات الحيوية وانخفاض الحرارة ومعدل النبض والتنفس."),
+      T("Body temperature, pulse, respiration, and blood pressure are the four traditional vital signs.","تُعد درجة حرارة الجسم والنبض والتنفس وضغط الدم العلامات الحيوية الأربع التقليدية.",1,"صواب."),
+      T("Pain is considered the fifth vital sign that should be assessed along with the other vital signs.","يُعد الألم العلامة الحيوية الخامسة التي يجب تقييمها مع العلامات الحيوية الأخرى.",1,"صواب."),
+      T("Body temperature is measured in heat units called degrees.","تُقاس درجة حرارة الجسم بوحدات حرارية تُسمى الدرجات.",1,"صواب."),
+      T("Core temperature remains relatively constant at 37°C.","تبقى درجة الحرارة الأساسية ثابتة نسبياً عند 37° مئوية.",1,"صواب."),
+      T("Body temperature increases with advancing age.","تزداد درجة حرارة الجسم مع التقدم في العمر.",0,"خطأ: تنخفض درجة حرارة الجسم قليلاً مع التقدم في العمر."),
+      T("Progesterone secretion at the time of ovulation rises body temperature by about 0.3–0.6°C.","يرفع إفراز هرمون البروجسترون وقت الإباضة (التبويض) درجة حرارة الجسم بنحو 0.3–0.6° مئوية.",1,"صواب."),
+      T("The rectal route is routinely used for measuring temperature in newborns.","يُستخدم المسار المستقيمي (الشرجي) بشكل روتيني لقياس درجة الحرارة عند حديثي الولادة.",0,"خطأ: لا يُستخدم القياس الشرجي روتينياً لحديثي الولادة لتفادي خطر انثقاب المستقيم، ويُفضّل القياس الإبطي."),
+      T("Oral temperature measurement is contraindicated for a patient receiving oxygen at more than 6 L/min.","يُمنع قياس درجة الحرارة عن طريق الفم لمريض يتلقى الأكسجين بمعدل يزيد عن 6 لترات/دقيقة.",1,"صواب."),
+      T("Forehead temperature measurement is appropriate because the temporal artery lies approximately 2 mm below the skin surface.","يُعد قياس درجة الحرارة من الجبهة مناسباً لأن الشريان الصدغي يقع على عمق نحو 2 ملم تحت سطح الجلد.",1,"صواب."),
+      M("Pulse is defined as:","يُعرَّف النبض بأنه:",["The wave of blood within an artery created by contraction of the left ventricle|موجة الدم داخل الشريان الناتجة عن انقباض البطين الأيسر","Contraction of the right atrium|انقباض الأذين الأيمن","Blood flow in the veins|تدفق الدم في الأوردة","Contraction of the right ventricle|انقباض البطين الأيمن"],0,"النبض هو موجة الدم المحسوسة داخل الشريان والناتجة عن انقباض البطين الأيسر للقلب."),
+      M("Which of the following affects heart rate?","أي مما يلي يؤثر في معدل ضربات القلب؟",["Age|العمر","Gender|الجنس","Emotional states|الحالات الانفعالية (العاطفية)","All of the above|جميع ما سبق"],3,"يتأثر معدل ضربات القلب بالعمر والجنس والحالة الانفعالية وعوامل أخرى كالنشاط والحرارة."),
+      M("Which pulse site is used for infants and when the radial pulse is inaccessible?","أي موضع للنبض يُستخدم للرضع وعند تعذر الوصول إلى النبض الكعبري؟",["Temporal|الصدغي","Carotid|السباتي","Radial|الكعبري","Popliteal|المأبضي (خلف الركبة)"],0,"يُستخدم النبض الصدغي (Temporal) عند الرضع وعندما يتعذر جس النبض الكعبري."),
+      M("Which pulse site is used to assess circulation to the feet?","أي موضع للنبض يُستخدم لتقييم التروية الدموية للقدمين؟",["Dorsalis pedis|شريان ظهر القدم (Dorsalis pedis)","Femoral|الفخذي","Popliteal|المأبضي","Brachial|العضدي"],0,"يُستخدم نبض شريان ظهر القدم (Dorsalis pedis) لتقييم التروية الدموية للقدمين."),
+      M("Which of the following is a characteristic of pulse that should be assessed?","أي مما يلي يُعد من خصائص النبض التي يجب تقييمها؟",["Rate|المعدل","Rhythm|الإيقاع (الانتظام)","Volume|الحجم (القوة)","All of the above|جميع ما سبق"],3,"عند تقييم النبض يجب فحص المعدل والإيقاع (الانتظام) والحجم (قوة النبض)."),
+      M("The normal pulse rate for an adult is:","المعدل الطبيعي للنبض لدى البالغين هو:",["40–60|40–60","60–100|60–100","100–120|100–120","120–140|120–140"],1,"يتراوح معدل النبض الطبيعي للبالغين بين 60 و100 نبضة في الدقيقة."),
+      M("Respiration is defined as:","يُعرَّف التنفس بأنه:",["Transport of oxygen from the atmosphere to body cells|نقل الأكسجين من الغلاف الجوي إلى خلايا الجسم","Transport of carbon dioxide from cells to the atmosphere|نقل ثاني أكسيد الكربون من الخلايا إلى الغلاف الجوي","The act of breathing and gas exchange|عملية التنفس وتبادل الغازات","All of the above|جميع ما سبق"],3,"يشمل التنفس عملية الشهيق والزفير وتبادل ونقل الأكسجين وثاني أكسيد الكربون بين الجو وخلايا الجسم."),
+      M("Which of the following is a major physiological pulmonary function?","أي مما يلي يُعد من الوظائف الفسيولوجية الرئوية الرئيسية؟",["Ventilation|التهوية","Diffusion|الانتشار","Transport|النقل","All of the above|جميع ما سبق"],3,"تشمل الوظائف الفسيولوجية الرئوية الرئيسية التهوية (Ventilation) والانتشار (Diffusion) ونقل الغازات (Transport)."),
+      M("Which of the following is a factor affecting respiratory rate?","أي مما يلي يُعد من العوامل المؤثرة في معدل التنفس؟",["Age|العمر","Physical activity|النشاط البدني","Fever|الحمى","All of the above|جميع ما سبق"],3,"يتأثر معدل التنفس بالعمر والنشاط البدني والحمى وغيرها من العوامل الفسيولوجية والمرضية."),
+      M("Which of the following is defined as the ability to breathe comfortably only in an upright position?","أي مما يلي يُعرَّف بالقدرة على التنفس براحة في الوضع المنتصب (الجالس) فقط؟",["Apnea|انقطاع النفس","Orthopnea|ضيق النفس الاضطجاعي (Orthopnea)","Hyperventilation|فرط التهوية","Hypoventilation|نقص التهوية"],1,"ضيق النفس الاضطجاعي (Orthopnea) يعني أن المريض يضيق نفسه عند الاستلقاء ولا يتنفس براحة إلا في وضع الجلوس أو الانتصاب."),
+      M("Which of the following is defined as an increased rate and depth of breathing over a prolonged period of time?","أي مما يلي يُعرَّف بزيادة معدل وعمق التنفس لفترة زمنية ممتدة؟",["Cheyne-Stokes respiration|تنفس شاين-ستوكس","Kussmaul's respiration|تنفس كوسماول","Hyperventilation|فرط التهوية","Dyspnea|ضيق التنفس (الزلة التنفسية)"],1,"يتميز تنفس كوسماول (Kussmaul's respiration) بزيادة سرعة وعمق التنفس بشكل مستمر لفترة ممتدة (كما في الحماض الكيتوني السكري)."),
+      T("Pulse rate increases with advancing age.","يزداد معدل النبض مع التقدم في العمر.",0,"خطأ: يتناقص معدل النبض الطبيعي تدريجياً مع التقدم في العمر (نبض الرضع والأطفال أسرع من البالغين)."),
+      T("The normal pulse rate for an adult is 60–100 beats per minute.","معدل النبض الطبيعي للبالغ هو 60–100 نبضة في الدقيقة.",1,"صواب."),
+      T("A pulse rate of less than 60 beats per minute is called tachycardia.","معدل النبض الأقل من 60 نبضة في الدقيقة يُسمى تسرع القلب (Tachycardia).",0,"خطأ: معدل النبض الأقل من 60 نبضة/دقيقة يُسمى بطء القلب (Bradycardia)."),
+      T("The carotid pulse is used during shock or cardiac arrest when other peripheral pulses are too weak to palpate.","يُستخدم النبض السباتي أثناء الصدمة أو السكتة القلبية عندما تكون النبضات الطرفية الأخرى أضعف من أن تُجس.",1,"صواب."),
+      T("The radial pulse is used in adults to assess the character of the peripheral pulse.","يُستخدم النبض الكعبري عند البالغين لتقييم خصائص النبض الطرفي.",1,"صواب."),
+      T("The apical pulse is measured with a stethoscope at the left midclavicular line at the fourth to fifth intercostal space.","يُقاس النبض القمي بالسماعة الطبية عند خط منتصف الترقوة الأيسر في الحيز الوربي الرابع إلى الخامس.",1,"صواب."),
+      T("The normal respiratory rate for a healthy adult ranges from 12 to 20 respirations per minute.","يتراوح معدل التنفس الطبيعي للبالغ السليم بين 12 و20 نفساً في الدقيقة.",1,"صواب."),
+      T("A respiratory rate of less than 12 breaths per minute is called tachypnea.","معدل التنفس الأقل من 12 نفساً في الدقيقة يُسمى تسرع التنفس (Tachypnea).",0,"خطأ: معدل التنفس الأقل من 12 نفساً/دقيقة يُسمى بطء التنفس (Bradypnea)."),
+      T("Kussmaul's respiration is an increased rate and depth of breathing over a prolonged period of time.","تنفس كوسماول هو زيادة في معدل وعمق التنفس لفترة زمنية ممتدة.",1,"صواب."),
+      T("Cheyne-Stokes respiration is characterized by apnea periods of 10–30 seconds between cycles.","يتميز تنفس شاين-ستوكس بفترات انقطاع نفس تتراوح بين 10 و30 ثانية بين الدورات التنفسية.",1,"صواب."),
+      T("External respiration is the interchange of oxygen and carbon dioxide between the circulating blood and cells throughout the body.","التنفس الخارجي هو تبادل الأكسجين وثاني أكسيد الكربون بين الدم الدائر وخلايا الجسم.",0,"خطأ: التبادل الغازي بين الدم الدائر وخلايا الجسم يُسمى التنفس الداخلي (Internal respiration)، أما الخارجي فيتم بين الحويصلات الهوائية والدم."),
+      T("Inhalation lasts from 1 to 1.5 seconds, while exhalation lasts from 2 to 3 seconds.","يستغرق الشهيق من 1 إلى 1.5 ثانية، بينما يستغرق الزفير من 2 إلى 3 ثوانٍ.",1,"صواب."),
+      M("Blood pressure is defined as:","يُعرَّف ضغط الدم بأنه:",["The measurement of pressure pulsations exerted against blood vessel walls during systole and diastole|قياس نبضات الضغط الواقعة على جدران الأوعية الدموية أثناء الانقباض والانبساط","The measurement of heartbeats|قياس نبضات القلب","The measurement of blood volume|قياس حجم الدم","The measurement of vascular resistance|قياس مقاومة الأوعية الدموية"],0,"ضغط الدم هو مقياس لقوة الضغط التي يبذلها الدم على جدران الأوعية الدموية أثناء الانقباض والانبساط."),
+      M("Which of the following is one of the four hemodynamic regulators for blood pressure control?","أي مما يلي يُعد أحد المنظمات الهيموديناميكية (الديناميكية الدموية) الأربعة للتحكم في ضغط الدم؟",["Blood volume|حجم الدم","Cardiac output|النتاج القلبي","Peripheral vascular resistance|المقاومة الوعائية الطرفية","All of the above|جميع ما سبق"],3,"تشمل المنظمات الهيموديناميكية الأربعة: حجم الدم، والنتاج القلبي، والمقاومة الوعائية الطرفية، ولزوجة الدم."),
+      M("Cardiac output is defined as:","يُعرَّف النتاج القلبي بأنه:",["The volume of blood pumped by the heart in 1 minute|حجم الدم الذي يضخه القلب في دقيقة واحدة","The volume of blood pumped per ventricular contraction|حجم الدم المضخوخ في كل انقباض بطيني","The volume of blood in the circulatory system|حجم الدم في الجهاز الدوري","The thickness of the blood|لزوجة الدم"],0,"النتاج القلبي (Cardiac output) هو حجم الدم الذي يضخه القلب خلال دقيقة واحدة."),
+      M("Which of the following is a common error in assessing blood pressure?","أي مما يلي يُعد خطأً شائعاً عند قياس ضغط الدم؟",["Bladder cuff too narrow or too wide|كون كفة جهاز الضغط ضيقة جداً أو واسعة جداً","Arm unsupported|عدم إسناد (دعم) الذراع","Deflating the cuff too quickly or too slowly|تفريغ الهواء من الكفة بسرعة زائدة أو ببطء شديد","All of the above|جميع ما سبق"],3,"استخدام كفة بمقاس غير مناسب، وعدم دعم الذراع بمستوى القلب، وسرعة التفريغ غير الصحيحة كلها أخطاء شائعة تؤثر في دقة قياس ضغط الدم."),
+      M("Hypertension is determined by:","يُشخَّص (يُحدَّد) فرط ضغط الدم من خلال:",["A sustained systolic reading of 140 mmHg or greater|قراءة انقباضية مستمرة 140 ملم زئبق أو أكثر","A sustained diastolic reading of 90 mmHg or greater|قراءة انبساطية مستمرة 90 ملم زئبق أو أكثر","Both A and B|كلاهما (A و B)","A systolic reading less than 95 mmHg|قراءة انقباضية أقل من 95 ملم زئبق"],2,"يُحدد ارتفاع ضغط الدم بقراءة انقباضية مستمرة ≥ 140 ملم زئبق أو قراءة انبساطية مستمرة ≥ 90 ملم زئبق."),
+      M("Orthostatic hypotension refers to a sudden drop in systolic pressure of:","يشير هبوط ضغط الدم الانتصابي إلى انخفاض مفاجئ في الضغط الانقباضي بمقدار:",["10 mmHg|10 ملم زئبق","15 mmHg|15 ملم زئبق","25 mmHg|25 ملم زئبق","30 mmHg|30 ملم زئبق"],2,"وفقاً للمنهج: يُعرف هبوط ضغط الدم الانتصابي بانخفاض مفاجئ بمقدار 25 ملم زئبق في الضغط الانقباضي و10 ملم زئبق في الانبساطي عند تغيير الوضعية."),
+      T("Pulse pressure is the difference between systolic and diastolic pressure.","ضغط النبض هو الفرق بين الضغط الانقباضي والضغط الانبساطي.",1,"صواب."),
+      T("Blood volume is one of the four hemodynamic regulators for blood pressure control.","يُعد حجم الدم أحد المنظمات الهيموديناميكية الأربعة للتحكم في ضغط الدم.",1,"صواب."),
+      T("Peripheral vascular resistance is the most important determinant of diastolic pressure.","تُعد المقاومة الوعائية الطرفية المحدد الأهم للضغط الانبساطي.",1,"صواب."),
+      T("Blood viscosity increases markedly when the hematocrit is more than 60–65.","تزداد لزوجة الدم بشكل ملحوظ عندما يتجاوز الهيماتوكريت (مكداس الدم) 60–65%.",1,"صواب."),
+      T("Systolic blood pressure is primarily a reflection of peripheral vascular resistance.","يعكس ضغط الدم الانقباضي بالأساس المقاومة الوعائية الطرفية.",0,"خطأ: ضغط الدم الانبساطي هو الذي يعكس المقاومة الوعائية الطرفية بشكل أساسي، بينما يعكس الانقباضي قوة انقباض البطين والنتاج القلبي."),
+      T("Hypertension is determined by a sustained systolic blood pressure of 140 mmHg or greater or a sustained diastolic reading of 90 mmHg or greater.","يُحدَّد فرط ضغط الدم بقراءة انقباضية مستمرة 140 ملم زئبق أو أكثر، أو قراءة انبساطية مستمرة 90 ملم زئبق أو أكثر.",1,"صواب."),
+      T("Orthostatic hypotension refers to a sudden drop of 25 mmHg in systolic pressure and 10 mmHg in diastolic pressure when the patient changes position.","يشير هبوط ضغط الدم الانتصابي إلى انخفاض مفاجئ بمقدار 25 ملم زئبق في الضغط الانقباضي و10 ملم زئبق في الضغط الانبساطي عند تغيير المريض لوضعيته.",1,"صواب.")
+    ]
+  }
+];
+
+function buildSeparateSections(originalBank) {
+  return originalBank.map(sec => {
+    const mcq = [], tf = [];
+    sec.questions.forEach(q => {
+      if (q.isTF !== undefined && q.isTF !== null) tf.push(q);
+      else mcq.push(q);
+    });
+    const combined = [...mcq, ...tf].map((q, idx) => ({ ...q, num: idx + 1 }));
+    return {
+      name: sec.name,
+      nameEn: sec.nameEn,
+      originalName: sec.name,
+      questions: combined
+    };
+  });
+}
+
+const QUESTION_BANK = buildSeparateSections(ORIGINAL_BANK);
+const LS_KEY = 'fundamentals_nursing_qbank_v2';
+const TRANS_CACHE_KEY = 'fundamentals_theory_trans_cache_v1';
+let transCache = {};
+let state = {
+  mode: 'practice',
+  order: 'device',
+  showTranslation: true,
+  timerSeconds: 0,
+  quizQuestions: [],
+  currentIndex: 0,
+  correctCount: 0,
+  wrongCount: 0,
+  answered: false,
+  selectedOptionIdx: null,
+  sessionMistakes: [],
+  timerInterval: null,
+  timeLeft: 0,
+  questionStates: []
+};
+let maleEnglishVoice = null, currentExplainLang = 'ar', currentExplainName = '';
+
+function safeGetLS(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function safeSetLS(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+function safeRemoveLS(k){try{localStorage.removeItem(k)}catch(e){}}
+try{transCache=JSON.parse(safeGetLS(TRANS_CACHE_KEY)||'{}')||{};}catch(e){transCache={};}
+
+function saveTransCache(){
+  try{
+    const keys=Object.keys(transCache);
+    if(keys.length>2500)keys.slice(0,500).forEach(k=>delete transCache[k]);
+    safeSetLS(TRANS_CACHE_KEY,JSON.stringify(transCache));
+  }catch(e){}
+}
+
+async function translateEnToAr(text){
+  if(!text)return '';
+  const clean=text.replace(/_{3,}/g,'...').trim();
+  if(transCache[clean])return transCache[clean];
+  try{
+    const res=await fetch('https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ar&dt=t&q='+encodeURIComponent(clean));
+    if(res.ok){
+      const data=await res.json();
+      if(data&&Array.isArray(data[0])){
+        const out=data[0].map(x=>(x&&x[0])?x[0]:'').join('').trim();
+        if(out){transCache[clean]=out;return out;}
+      }
+    }
+  }catch(e){}
+  try{
+    const res2=await fetch('https://api.mymemory.translated.net/get?q='+encodeURIComponent(clean)+'&langpair=en|ar');
+    if(res2.ok){
+      const d2=await res2.json();
+      const out2=d2&&d2.responseData&&d2.responseData.translatedText;
+      if(out2&&out2.trim()){transCache[clean]=out2.trim();return out2.trim();}
+    }
+  }catch(e){}
+  return '';
+}
+
+async function ensureQuestionTranslated(q){
+  if(!q||q._transDone)return;
+  let changed=false;
+  const tasks=[];
+  if(!q.ar){tasks.push(translateEnToAr(q.en).then(ar=>{if(ar){q.ar=ar;changed=true;}}));}
+  if(!q.isTF&&q.options){
+    q.options.forEach(opt=>{
+      if(!opt.ar){tasks.push(translateEnToAr(opt.en).then(ar=>{if(ar){opt.ar=ar;changed=true;}}));}
+    });
+  }
+  if(tasks.length>0){await Promise.all(tasks);if(changed)saveTransCache();}
+  q._transDone=!!(q.ar&&(q.isTF||(q.options&&q.options.every(o=>!!o.ar))));
+}
+
+function prefetchNextQuestions(fromIdx){
+  if(!state.showTranslation)return;
+  [fromIdx+1,fromIdx+2].forEach(i=>{if(i<state.quizQuestions.length)ensureQuestionTranslated(state.quizQuestions[i]);});
+}
+
+function setTheme(t){document.body.classList.toggle('light',t==='light');document.querySelectorAll('.theme-toggle button').forEach(b=>{b.classList.toggle('active',b.dataset.theme===t)});safeSetLS('informatics_theme',t)}
+function loadProgress(){try{const r=safeGetLS(LS_KEY);if(!r)return{attempted:{},mistakes:{}};return JSON.parse(r)}catch(e){return{attempted:{},mistakes:{}}}}
+function saveProgress(p){safeSetLS(LS_KEY,JSON.stringify(p))}
+function qid(s,n){return s+'___'+n}
+
+function showExplanation(name){
+  currentExplainName=name;
+  const box=document.getElementById('section-explanation'),title=document.getElementById('explain-title'),textDiv=document.getElementById('explain-text');
+  const data={
+    "الجزء 1: السوائل والكهارل (Fluids & Electrolytes)":{
+      text_ar:"يشمل هذا الجزء (60 سؤالاً):\n• سوائل الجسم وتنظيمها: تشكّل نحو 60% من وزن البالغ الطبيعي (ثلثاها داخل الخلايا ICF، والثلث خارجها ECF: السائل الخلالي ~8 لترات، والسائل داخل الأوعية ~3 لترات أو 7%). الاحتياج اليومي ~2,500 مل (المدخول الفموي 1,200–1,500 مل). يعزز ADH إعادة امتصاص الماء، والألدوستيرون احتباس الصوديوم، بينما يعزز ANP إطراح الصوديوم ويثبط آلية العطش.\n• الكهارل: الصوديوم خارج الخلايا (135–145 ملي مكافئ/لتر)، البوتاسيوم داخل الخلايا (3.5–5 ملي مكافئ/لتر)، المغنيسيوم (1.3–2.1 ملي مكافئ/لتر)، الكالسيوم (8.5–10.5 ملغ/ديسيلتر) وعلاقته عكسية بالفوسفور.\n• الاختلالات: نقص حجم السوائل (شح البول، ارتفاع الكثافة النوعية للبول ونيتروجين يوريا الدم BUN)، زيادة حجم السوائل (ضيق التنفس، خراخر رئوية، نبض قافز، وذمة منطبعة، زيادة مفاجئة في الوزن بمقدار 5 أرطال). نقص كالسيوم الدم: علامتا شوفوستيك وتروسو. فرط بوتاسيوم الدم: موجات T مؤنفة؛ ونقصه: موجات T مسطحة أو مقلوبة وانخفاض قطعة ST.",
+      text_en:"Covers (60 Questions):\n• Body Fluids: 60% adult weight (2/3 ICF, 1/3 ECF: interstitial ~8L, intravascular ~3L or 7%). Daily need ~2,500 mL (oral 1,200–1,500 mL). ADH (water reabsorption), Aldosterone (Na retention), ANP (Na excretion & inhibits thirst).\n• Electrolytes: ECF Na (135–145 mEq/L), ICF K (3.5–5 mEq/L), Mg (1.3–2.1 mEq/L), Ca (8.5–10.5 mg/dL, inverse with P).\n• Imbalances: Fluid deficit (oliguria, high specific gravity & BUN); excess (dyspnea, crackles, bounding pulse, pitting edema, 5 lb gain); Hypocalcemia (Chvostek's & Trousseau's); Hyperkalemia (peaked T); Hypokalemia (flat/inverted T, depressed ST)."
+    },
+    "الجزء 2: العلامات الحيوية (Vital Signs)":{
+      text_ar:"يشمل هذا الجزء (58 سؤالاً):\n• درجة الحرارة: العلامات الحيوية الأربع التقليدية + الألم كعلامة حيوية خامسة. الحرارة الأساسية ~37° مئوية وتنخفض قليلاً مع التقدم في العمر وترتفع وقت الإباضة (0.3–0.6° مئوية). يُفقد الجسم الحرارة عبر التوصيل والحمل الحراري والتبخر والإشعاع. يُمنع القياس الفموي للأطفال دون 6 سنوات، وفاقدي الوعي، ولمن يتلقون الأكسجين بأكثر من 6 لترات/دقيقة.\n• النبض والتنفس: النبض الطبيعي 60–100 نبضة/دقيقة (أقل من 60 يُسمى بطء القلب Bradycardia). يُقاس النبض القمي في الحيز الوربي الرابع إلى الخامس على خط منتصف الترقوة الأيسر، والصدغي للرضع، والسباتي أثناء الصدمة أو السكتة القلبية، وشريان ظهر القدم لتروية القدمين. معدل التنفس الطبيعي 12–20 نفساً/دقيقة (أقل من 12 بطء التنفس Bradypnea). ضيق النفس الاضطجاعي (Orthopnea) يزول بالجلوس، وتنفس كوسماول سريع وعميق وممتد، وتنفس شاين-ستوكس تتخلله فترات انقطاع نفس 10–30 ثانية.\n• ضغط الدم: المنظمات الهيموديناميكية الأربعة (حجم الدم، النتاج القلبي، المقاومة الوعائية الطرفية المحددة للضغط الانبساطي، واللزوجة عند تجاوز الهيماتوكريت 60–65%). فرط ضغط الدم ≥ 140/90 ملم زئبق. الهبوط الانتصابي: انخفاض مفاجئ بمقدار 25 ملم زئبق في الانقباضي و10 في الانبساطي.",
+      text_en:"Covers (58 Questions):\n• Temperature: 4 traditional vital signs + Pain (5th). Core ~37°C; decreases with age; +0.3–0.6°C at ovulation. Oral contraindicated <6 yrs, unconscious, O2 >6 L/min.\n• Pulse & Respiration: Pulse 60–100 bpm (<60 bradycardia). Apical 4th–5th ICS LMCL, temporal (infants), carotid (arrest), dorsalis pedis (feet). RR 12–20/min (<12 bradypnea). Orthopnea, Kussmaul's, Cheyne-Stokes.\n• Blood Pressure: Regulators (volume, CO, PVR for diastolic, viscosity at Hct >60–65). Hypertension ≥140/90 mmHg. Orthostatic hypotension: drop of 25 systolic & 10 diastolic."
+    }
+  };
+  const d=data[name];title.textContent=name;
+  if(!d){textDiv.textContent=currentExplainLang==='ar'?'لا يوجد شرح':'No explanation.';box.classList.add('show');updateExplainTextClass();return;}
+  textDiv.innerHTML=(currentExplainLang==='ar'?d.text_ar:d.text_en).replace(/\n/g,'<br>');updateExplainTextClass();box.classList.add('show');
+}
+function updateExplainTextClass(){const t=document.getElementById('explain-text');t.classList.remove('ar','en');t.classList.add(currentExplainLang);}
+function closeExplanation(){document.getElementById('section-explanation').classList.remove('show');}
+function setExplainLang(l){currentExplainLang=l;document.querySelectorAll('.explain-controls .lang-btn').forEach(b=>{b.classList.toggle('active',b.dataset.lang===l)});if(currentExplainName)showExplanation(currentExplainName);}
+
+function updateHomeStats(){
+  const p=loadProgress(),keys=Object.keys(p.attempted||{});let c=0,w=0;
+  keys.forEach(k=>{if(p.attempted[k]==='correct')c++;else w++});
+  const total=keys.length,pct=total?Math.round((c/total)*100):0;
+  document.getElementById('statAttempted').textContent=total;
+  document.getElementById('statCorrect').textContent=c;
+  document.getElementById('statWrong').textContent=w;
+  document.getElementById('progressPercent').innerHTML=pct+'<small>%</small>';
+  document.getElementById('progressCircle').style.strokeDashoffset=176-(pct/100)*176;
+  updateWeakSectionSuggestion(p);
+}
+
+function updateWeakSectionSuggestion(p){
+  const att=p.attempted||{};let bestIdx=-1,bestRate=0,bestName='';
+  QUESTION_BANK.forEach((sec,idx)=>{
+    let a=0,w=0;sec.questions.forEach(q=>{const k=qid(sec.name,q.num);if(att[k]!==undefined){a++;if(att[k]==='wrong')w++}});
+    if(a>=2){const rate=w/a;if(rate>bestRate){bestRate=rate;bestIdx=idx;bestName=sec.name}}
+  });
+  const link=document.getElementById('weakLink');
+  if(bestIdx>=0&&bestRate>0){
+    link.style.display='flex';document.getElementById('weakSectionName').textContent=bestName;
+    document.getElementById('weakSectionRate').textContent=Math.round(bestRate*100)+'%';link.dataset.sectionIdx=bestIdx;
+  }else link.style.display='none';
+}
+
+function buildSectionList(){
+  const wrap=document.getElementById('section-list');if(!wrap)return;wrap.innerHTML='';
+  QUESTION_BANK.forEach((sec,idx)=>{
+    const div=document.createElement('div');div.className='section-item active';div.dataset.idx=idx;
+    const nameSpan=document.createElement('span');nameSpan.className='sec-title';nameSpan.textContent=sec.nameEn;
+    const infoBtn=document.createElement('button');infoBtn.className='info-btn';infoBtn.type='button';infoBtn.innerHTML='<i class="fas fa-info-circle"></i>';infoBtn.title="شرح الجزء";
+    infoBtn.onclick=(e)=>{e.stopPropagation();showExplanation(sec.originalName)};
+    const cntSpan=document.createElement('span');cntSpan.className='cnt';cntSpan.textContent=sec.questions.length;
+    div.appendChild(nameSpan);div.appendChild(infoBtn);div.appendChild(cntSpan);
+    div.onclick=()=>{div.classList.toggle('active');updateToggleAllButton();};
+    wrap.appendChild(div);
+  });
+  updateToggleAllButton();
+}
+
+function toggleAllSections(){
+  const items=document.querySelectorAll('#section-list .section-item');
+  const allActive=Array.from(items).every(el=>el.classList.contains('active'));
+  items.forEach(el=>el.classList.toggle('active',!allActive));updateToggleAllButton();
+}
+function updateToggleAllButton(){
+  const items=document.querySelectorAll('#section-list .section-item');
+  const activeCount=document.querySelectorAll('#section-list .section-item.active').length;
+  const btn=document.getElementById('selectAllBtn');
+  if(btn)btn.textContent=(activeCount===items.length&&items.length>0)?'إلغاء الكل':'تحديد الكل';
+}
+
+function toggleOptions(t){
+  document.querySelectorAll('.sub-options').forEach(e=>e.classList.remove('show'));
+  const target=document.getElementById(t);if(target)target.classList.add('show');
+  document.querySelectorAll('.action-icon').forEach(e=>e.classList.remove('active'));
+  const activeIcon=document.querySelector(`.action-icon[data-target="${t}"]`);if(activeIcon)activeIcon.classList.add('active');
+}
+function closeAllOptions(){
+  document.querySelectorAll('.sub-options').forEach(e=>e.classList.remove('show'));
+  document.querySelectorAll('.action-icon').forEach(e=>e.classList.remove('active'));
+  const def=document.querySelector('.action-icon[data-target="modeOptions"]');if(def)def.classList.add('active');
+}
+function selectMode(m){state.mode=m;document.querySelectorAll('#modeOptions .action-btn').forEach(e=>{e.classList.toggle('active',e.dataset.mode===m)});closeAllOptions();}
+function selectOrder(o){state.order=o;document.querySelectorAll('#orderOptions .action-btn').forEach(e=>{e.classList.toggle('active',e.dataset.order===o)});closeAllOptions();}
+function selectTranslate(t){state.showTranslation=(t==='yes');document.querySelectorAll('#langOptions .action-btn').forEach(e=>{e.classList.toggle('active',e.dataset.translate===t)});closeAllOptions();}
+function selectTimer(s){state.timerSeconds=s;document.querySelectorAll('#timerOptions .action-btn').forEach(e=>{e.classList.toggle('active',parseInt(e.dataset.timer)===s)});closeAllOptions();}
+function toggleQuizTranslation(){
+  state.showTranslation=!state.showTranslation;
+  document.querySelectorAll('#langOptions .action-btn').forEach(e=>{e.classList.toggle('active',(e.dataset.translate==='yes')===state.showTranslation)});
+  renderQuestion();
+}
+
+function enterApp(){
+  try{
+    document.getElementById('main-screen').style.display='block';
+    buildSectionList();updateHomeStats();
+    setTheme(safeGetLS('informatics_theme')||'dark');
+    if(window.speechSynthesis){
+      window.speechSynthesis.getVoices();
+      window.speechSynthesis.onvoiceschanged=()=>{window.speechSynthesis.getVoices();maleEnglishVoice=null;};
+    }
+  }catch(err){
+    const wrap=document.getElementById('section-list');
+    if(wrap)wrap.innerHTML='<div style="color:#ef5350;padding:10px;">خطأ: '+err.message+'</div>';
+  }
+}
+function goHome(){stopTimer();document.getElementById('screen-quiz').classList.remove('active');document.getElementById('screen-results').classList.remove('active');document.getElementById('main-screen').style.display='block';updateHomeStats();}
+function quitQuiz(){if(confirm('متأكد تخرج؟')){stopTimer();goHome();}}
+function resetProgress(){if(confirm('متأكد تصفير التقدم؟')){safeRemoveLS(LS_KEY);updateHomeStats();}}
+function shuffleArray(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a;}
+
+function startQuiz(){
+  const activeEls=document.querySelectorAll('#section-list .section-item.active');
+  if(activeEls.length===0){alert('اختار جزء واحد على الأقل!');return;}
+  const idxs=Array.from(activeEls).map(el=>parseInt(el.dataset.idx));
+  let qs=[];
+  idxs.forEach(idx=>{const sec=QUESTION_BANK[idx];sec.questions.forEach(q=>{qs.push(Object.assign({},q,{sectionName:sec.name,options:q.options?q.options.map(o=>Object.assign({},o)):undefined}));});});
+  if(qs.length===0){alert('هذا الجزء لا يحتوي على أسئلة!');return;}
+  if(state.order==='random')qs=shuffleArray(qs);
+  state.quizQuestions=qs;state.currentIndex=0;state.correctCount=0;state.wrongCount=0;state.sessionMistakes=[];
+  state.questionStates=qs.map(()=>({selectedOption:null,answered:false,isCorrect:false,chosenIdxs:[]}));
+  document.getElementById('main-screen').style.display='none';
+  document.getElementById('screen-quiz').classList.add('active');
+  document.getElementById('screen-results').classList.remove('active');
+  const gridContainer=document.getElementById('questions-grid-container');if(gridContainer)gridContainer.classList.remove('show');
+  renderQuestion();
+}
+
+function reviewMistakes(){
+  const p=loadProgress(),mistakeKeys=Object.keys(p.mistakes||{});
+  if(mistakeKeys.length===0){alert('مفيش أخطاء للمراجعة 🎉');return;}
+  let qs=[];
+  QUESTION_BANK.forEach(sec=>{sec.questions.forEach(q=>{if(mistakeKeys.includes(qid(sec.name,q.num)))qs.push(Object.assign({},q,{sectionName:sec.name,options:q.options?q.options.map(o=>Object.assign({},o)):undefined}));});});
+  if(qs.length===0){alert('مفيش أخطاء للمراجعة 🎉');return;}
+  state.quizQuestions=qs;state.currentIndex=0;state.correctCount=0;state.wrongCount=0;state.sessionMistakes=[];state.mode='practice';
+  state.questionStates=qs.map(()=>({selectedOption:null,answered:false,isCorrect:false,chosenIdxs:[]}));
+  document.getElementById('main-screen').style.display='none';
+  document.getElementById('screen-quiz').classList.add('active');
+  document.getElementById('screen-results').classList.remove('active');
+  const gridContainer=document.getElementById('questions-grid-container');if(gridContainer)gridContainer.classList.remove('show');
+  renderQuestion();
+}
+
+function startWeakSectionQuiz(){
+  const link=document.getElementById('weakLink'),idx=link.dataset.sectionIdx;if(idx===undefined)return;
+  document.querySelectorAll('#section-list .section-item').forEach(el=>{el.classList.toggle('active',el.dataset.idx==idx)});
+  startQuiz();
+}
+
+function toggleQuestionsGrid(){
+  const gridContainer=document.getElementById('questions-grid-container');if(!gridContainer)return;
+  gridContainer.classList.toggle('show');
+  if(gridContainer.classList.contains('show'))renderGridButtons();
+}
+function renderGridButtons(){
+  const gridDiv=document.getElementById('q-grid-buttons');if(!gridDiv)return;gridDiv.innerHTML='';
+  state.quizQuestions.forEach((_,i)=>{
+    const btn=document.createElement('button');btn.className='grid-btn';
+    btn.textContent=i+1;
+    const st=state.questionStates[i];
+    if(i===state.currentIndex)btn.classList.add('current');
+    if(st.answered)btn.classList.add(st.isCorrect?'answered-correct':'answered-wrong');
+    btn.onclick=()=>goToSpecificQuestion(i);
+    gridDiv.appendChild(btn);
+  });
+}
+function goToSpecificQuestion(targetIndex){if(targetIndex>=0&&targetIndex<state.quizQuestions.length){state.currentIndex=targetIndex;renderQuestion();}}
+
+function renderQuestion(){
+  const idx=state.currentIndex,q=state.quizQuestions[idx],st=state.questionStates[idx];
+  state.answered=st.answered;state.selectedOptionIdx=st.selectedOption;
+  const total=state.quizQuestions.length;
+  document.getElementById('quiz-position').innerHTML=`<i class="fas fa-question-circle"></i> ${idx+1} / ${total}`;
+  document.getElementById('quiz-score').innerHTML=`<i class="fas fa-check-circle" style="color:var(--success);"></i> ${state.correctCount} <i class="fas fa-times-circle" style="color:var(--danger);margin-right:4px;"></i> ${state.wrongCount}`;
+  document.getElementById('progress-bar').style.width=(idx/total*100)+'%';
+  let tagText=`<i class="fas fa-tag"></i> ${q.sectionName}`;
+  if(q.isTF)tagText+=` <span class="tf-badge">صواب / خطأ</span>`;
+  document.getElementById('q-section-tag').innerHTML=tagText;
+  const transBtn=document.getElementById('btn-toggle-trans');
+  if(transBtn)transBtn.innerHTML=state.showTranslation?'<i class="fas fa-language"></i> ترجمة: مفعّلة':'<i class="fas fa-language"></i> EN فقط';
+  const gridToggleBtn=document.getElementById('btn-toggle-grid'),gridContainer=document.getElementById('questions-grid-container');
+  if(state.mode==='practice'){if(gridToggleBtn)gridToggleBtn.style.display='inline-flex';if(gridContainer&&gridContainer.classList.contains('show'))renderGridButtons();}
+  else{if(gridToggleBtn)gridToggleBtn.style.display='none';if(gridContainer)gridContainer.classList.remove('show');}
+
+  const qEn=document.getElementById('q-en');wrapEnglishText(`${q.num}. ${q.en}`,qEn);
+  const qAr=document.getElementById('q-ar');
+  if(state.showTranslation){qAr.textContent=q.ar||'جارٍ الترجمة...';qAr.style.display='block';}
+  else{qAr.textContent='';qAr.style.display='none';}
+
+  const opts=document.getElementById('options');opts.innerHTML='';
+  if(q.isTF){
+    [{en:"True",ar:"صواب"},{en:"False",ar:"خطأ"}].forEach((opt,i)=>{
+      const div=document.createElement('div');div.className='option';div.dataset.idx=i;
+      div.dataset.correct=((i===0)?q.correct===true:q.correct===false)?'true':'false';
+      const enDiv=document.createElement('div');enDiv.className='opt-en';wrapEnglishText(opt.en,enDiv);
+      const arDiv=document.createElement('div');arDiv.className='opt-ar';arDiv.textContent=opt.ar||'';arDiv.style.display=state.showTranslation&&opt.ar?'block':'none';
+      const mark=document.createElement('span');mark.className='mark';
+      div.appendChild(enDiv);div.appendChild(arDiv);div.appendChild(mark);
+      div.onclick=()=>onOptionClick(i);opts.appendChild(div);
+    });
+  }else{
+    q.options.forEach((opt,i)=>{
+      const div=document.createElement('div');div.className='option';div.dataset.idx=i;div.dataset.correct=opt.correct?'true':'false';
+      const enDiv=document.createElement('div');enDiv.className='opt-en';wrapEnglishText(opt.en,enDiv);
+      const arDiv=document.createElement('div');arDiv.className='opt-ar';arDiv.textContent=opt.ar||'';arDiv.style.display=state.showTranslation&&opt.ar?'block':'none';
+      const mark=document.createElement('span');mark.className='mark';
+      div.appendChild(enDiv);div.appendChild(arDiv);div.appendChild(mark);
+      div.onclick=()=>onOptionClick(i);opts.appendChild(div);
+    });
+  }
+
+  if(state.showTranslation){
+    if(!q._transDone){
+      ensureQuestionTranslated(q).then(()=>{
+        if(state.currentIndex!==idx||!state.showTranslation)return;
+        qAr.textContent=q.ar||'';qAr.style.display=q.ar?'block':'none';
+        if(!q.isTF&&q.options){
+          const optEls=opts.querySelectorAll('.option');
+          q.options.forEach((opt,i)=>{
+            if(optEls[i]){const arEl=optEls[i].querySelector('.opt-ar');if(arEl){arEl.textContent=opt.ar||'';arEl.style.display=opt.ar?'block':'none';}}
+          });
+        }
+      });
+    }
+    prefetchNextQuestions(idx);
+  }
+
+  if(st.answered){
+    const chosenIdxs=st.chosenIdxs;
+    document.querySelectorAll('.option').forEach(el=>{
+      const idxOpt=parseInt(el.dataset.idx);el.classList.add('disabled');
+      if(el.dataset.correct==='true'){el.classList.add('correct');el.querySelector('.mark').textContent='✅';}
+      else if(chosenIdxs.includes(idxOpt)){el.classList.add('wrong');el.querySelector('.mark').textContent='❌';}
+      if(st.selectedOption===idxOpt)el.classList.add('selected');
+    });
+    const fb=document.getElementById('feedback');fb.classList.remove('hidden');fb.className='feedback-box '+(st.isCorrect?'correct':'wrong');
+    let correctLabels=q.isTF?(q.correct?'True (صواب)':'False (خطأ)'):q.options.map(o=>o.correct?o.en:null).filter(Boolean).join('، ');
+    fb.innerHTML=`<div class="fb-title">${st.isCorrect?'✅ صحيحة!':'❌ غلط'}</div>${!st.isCorrect?`<div><b>الصح:</b> ${correctLabels}</div>`:''}<div class="fb-explain">💡 ${q.explain_ar||''}</div>`;
+  }else{
+    document.getElementById('feedback').classList.add('hidden');document.getElementById('feedback').innerHTML='';
+  }
+
+  const nextBtn=document.getElementById('btn-next'),prevBtn=document.getElementById('btn-prev');
+  prevBtn.disabled=(idx===0);const isLast=idx===total-1;
+  if(state.mode==='test'){
+    nextBtn.disabled=(state.selectedOptionIdx===null);
+    nextBtn.innerHTML=`<i class="fas fa-arrow-left"></i> ${isLast?'إنهاء ✅':'التالي ⬅️'}`;
+    nextBtn.onclick=()=>{
+      if(state.selectedOptionIdx===null)return;
+      if(!state.answered){
+        const q2=state.quizQuestions[state.currentIndex];
+        const isCorrect=q2.isTF?((document.querySelector(`.option[data-idx="${state.selectedOptionIdx}"]`)||{}).dataset?.correct==='true'):q2.options[state.selectedOptionIdx].correct;
+        finalizeAnswer(isCorrect,[state.selectedOptionIdx]);
+      }
+      if(state.currentIndex<state.quizQuestions.length-1){state.currentIndex++;renderQuestion();}else{showResults();}
+    };
+  }else{
+    nextBtn.disabled=false;
+    nextBtn.innerHTML=isLast?`<i class="fas fa-flag-checkered"></i> إنهاء`:`<i class="fas fa-arrow-left"></i> التالي`;
+    nextBtn.onclick=()=>{
+      if(!state.answered){alert('يجب اختيار إجابة أولاً!');return;}
+      if(state.currentIndex<state.quizQuestions.length-1){state.currentIndex++;renderQuestion();}else{showResults();}
+    };
+  }
+  if(!st.answered)startTimer();else stopTimer();
+}
+
+function onOptionClick(i){
+  if(state.answered)return;state.selectedOptionIdx=i;
+  document.querySelectorAll('.option').forEach(el=>el.classList.remove('selected'));
+  document.querySelector(`.option[data-idx="${i}"]`).classList.add('selected');
+  if(state.mode==='test'){document.getElementById('btn-next').disabled=false;}else{submitSingleAnswer(i);}
+}
+function submitSingleAnswer(i){
+  const q=state.quizQuestions[state.currentIndex];
+  const isCorrect=q.isTF?(document.querySelector(`.option[data-idx="${i}"]`).dataset.correct==='true'):!!q.options[i].correct;
+  finalizeAnswer(isCorrect,[i]);
+}
+function finalizeAnswer(isCorrect,chosenIdxs){
+  stopTimer();state.answered=true;
+  const idx=state.currentIndex,st=state.questionStates[idx],q=state.quizQuestions[idx];
+  st.selectedOption=state.selectedOptionIdx;st.answered=true;st.isCorrect=isCorrect;st.chosenIdxs=chosenIdxs;
+  if(isCorrect)state.correctCount++;else state.wrongCount++;
+  const p=loadProgress(),key=qid(q.sectionName,q.num);
+  p.attempted=p.attempted||{};p.mistakes=p.mistakes||{};p.attempted[key]=isCorrect?'correct':'wrong';
+  if(isCorrect)delete p.mistakes[key];else p.mistakes[key]=true;
+  saveProgress(p);
+  if(!isCorrect)state.sessionMistakes.push({q,chosenIdxs});
+  renderQuestion();
+}
+function previousQuestion(){if(state.currentIndex>0){state.currentIndex--;renderQuestion();}}
+
+function showResults(){
+  stopTimer();document.getElementById('screen-quiz').classList.remove('active');
+  document.getElementById('screen-results').classList.add('active');document.getElementById('mistakes-list-wrap').classList.add('hidden');
+  const total=state.quizQuestions.length,pct=total?Math.round((state.correctCount/total)*100):0;
+  document.getElementById('result-pct').textContent=pct+'%';document.getElementById('score-circle').style.setProperty('--pct',pct);
+  document.getElementById('res-total').textContent=total;document.getElementById('res-correct').textContent=state.correctCount;document.getElementById('res-wrong').textContent=state.wrongCount;
+  document.getElementById('btn-show-mistakes').classList.toggle('hidden',state.sessionMistakes.length===0);
+}
+
+function showMistakesList(){
+  const wrap=document.getElementById('mistakes-list-wrap'),list=document.getElementById('mistakes-list');list.innerHTML='';
+  state.sessionMistakes.forEach(m=>{
+    const q=m.q;let yourAnswers='',correctAnswers='';
+    if(q.isTF){
+      yourAnswers=m.chosenIdxs.length?m.chosenIdxs.map(i=>i===0?'True (صواب)':'False (خطأ)').join('، '):'لم تُجب (انتهى الوقت)';
+      correctAnswers=q.correct?'True (صواب)':'False (خطأ)';
+    }else{
+      yourAnswers=m.chosenIdxs.length?m.chosenIdxs.map(i=>q.options[i].en).join('، '):'لم تُجب (انتهى الوقت)';
+      correctAnswers=q.options.map(o=>o.correct?o.en:null).filter(Boolean).join('، ');
+    }
+    const div=document.createElement('div');div.className='mistake-item';
+    const toggleBtn=document.createElement('button');toggleBtn.className='mistake-toggle';toggleBtn.innerHTML='<i class="fas fa-eye"></i> عرض السؤال';
+    const detailDiv=document.createElement('div');detailDiv.className='mistake-detail';detailDiv.style.display='none';
+    const qHeader=document.createElement('div');qHeader.style.fontWeight='bold';qHeader.style.marginBottom='8px';qHeader.textContent=`${q.num}. ${q.en}`;detailDiv.appendChild(qHeader);
+    if(q.ar){const qArH=document.createElement('div');qArH.style.color='var(--muted)';qArH.style.marginBottom='8px';qArH.style.direction='rtl';qArH.style.textAlign='right';qArH.textContent=q.ar;detailDiv.appendChild(qArH);}
+    const optsDiv=document.createElement('div');
+    const listOpts=q.isTF?[{en:"True (صواب)",correct:q.correct===true},{en:"False (خطأ)",correct:q.correct===false}]:q.options;
+    listOpts.forEach((opt,i)=>{
+      const row=document.createElement('div');row.className='opt-row';
+      const label=document.createElement('span');label.className='opt-label';label.textContent=opt.en+(!q.isTF&&opt.ar?' — '+opt.ar:'');
+      const status=document.createElement('span');status.className='opt-status';
+      if(opt.correct){status.textContent='✅';status.style.color='var(--success)';}
+      else if(m.chosenIdxs.includes(i)){status.textContent='❌';status.style.color='var(--danger)';}
+      else{status.textContent='—';status.style.color='var(--muted)';}
+      row.appendChild(label);row.appendChild(status);optsDiv.appendChild(row);
+    });
+    detailDiv.appendChild(optsDiv);
+    const explainDiv=document.createElement('div');explainDiv.style.marginTop='8px';explainDiv.style.fontStyle='italic';explainDiv.style.color='var(--muted)';explainDiv.style.direction='rtl';explainDiv.style.textAlign='right';explainDiv.textContent=`💡 ${q.explain_ar||''}`;detailDiv.appendChild(explainDiv);
+    toggleBtn.onclick=()=>{const vis=detailDiv.style.display!=='none';detailDiv.style.display=vis?'none':'block';toggleBtn.innerHTML=vis?'<i class="fas fa-eye"></i> عرض السؤال':'<i class="fas fa-eye-slash"></i> إخفاء السؤال';};
+    div.innerHTML=`<div class="m-q">${q.num}. ${q.en}</div><div class="m-you">إجابتك: ${yourAnswers}</div><div class="m-correct">الصح: ${correctAnswers}</div>`;
+    div.appendChild(toggleBtn);div.appendChild(detailDiv);list.appendChild(div);
+  });
+  wrap.classList.remove('hidden');wrap.scrollIntoView({behavior:'smooth'});
+}
+
+function stopTimer(){if(state.timerInterval){clearInterval(state.timerInterval);state.timerInterval=null;}const b=document.getElementById('timer-badge');b.classList.add('hidden');b.classList.remove('warn','danger');}
+function startTimer(){stopTimer();if(!state.timerSeconds||state.timerSeconds<=0)return;const badge=document.getElementById('timer-badge');state.timeLeft=state.timerSeconds;badge.classList.remove('hidden','warn','danger');badge.innerHTML=`<i class="fas fa-hourglass-half"></i> ${state.timeLeft}`;state.timerInterval=setInterval(()=>{state.timeLeft--;if(state.timeLeft<=0){badge.innerHTML=`<i class="fas fa-hourglass-end"></i> 0`;stopTimer();onTimeUp();return;}badge.innerHTML=`<i class="fas fa-hourglass-half"></i> ${state.timeLeft}`;badge.classList.toggle('warn',state.timeLeft<=3&&state.timeLeft>1);badge.classList.toggle('danger',state.timeLeft<=1);},1000);}
+function onTimeUp(){if(state.answered)return;finalizeAnswer(false,state.selectedOptionIdx!==null?[state.selectedOptionIdx]:[]);}
+
+function getMaleEnglishVoice(){if(maleEnglishVoice)return maleEnglishVoice;const voices=window.speechSynthesis.getVoices();let v=voices.find(v=>v.lang==='en-US'&&v.name.toLowerCase().includes('male'))||voices.find(v=>v.lang==='en-GB'&&v.name.toLowerCase().includes('male'))||voices.find(v=>v.lang.startsWith('en')&&v.name.toLowerCase().includes('male'))||voices.find(v=>v.lang.startsWith('en'));maleEnglishVoice=v;return v;}
+function speakWord(word){if(!window.speechSynthesis)return;window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(word);u.lang='en-US';u.rate=.7;u.pitch=1;u.volume=1;const v=getMaleEnglishVoice();if(v)u.voice=v;window.speechSynthesis.speak(u);}
+
+function wrapEnglishText(text,container){
+  if(!container)return;container.innerHTML='';if(!text)return;
+  const tempDiv=document.createElement('div');tempDiv.innerHTML=text;
+  function processNodes(node,target){
+    node.childNodes.forEach(child=>{
+      if(child.nodeType===Node.TEXT_NODE){
+        const words=child.textContent.split(' ');
+        words.forEach((word,idx)=>{
+          if(word.trim()===''){target.appendChild(document.createTextNode(' '));return;}
+          const span=document.createElement('span');span.className='word-en';span.textContent=word;
+          let pressTimer=null;
+          const startPress=()=>{pressTimer=setTimeout(()=>{speakWord(word.replace(/[^a-zA-Z]/g,''));span.classList.add('speaking');setTimeout(()=>span.classList.remove('speaking'),600);const hint=document.getElementById('speech-hint');hint.textContent=`🔊 ${word}`;hint.classList.add('show');setTimeout(()=>hint.classList.remove('show'),900);},800);};
+          const endPress=()=>{if(pressTimer){clearTimeout(pressTimer);pressTimer=null;}};
+          span.addEventListener('pointerdown',startPress);span.addEventListener('pointerup',endPress);span.addEventListener('pointerleave',endPress);
+          span.addEventListener('touchstart',startPress,{passive:true});span.addEventListener('touchend',endPress,{passive:true});
+          target.appendChild(span);
+          if(idx<words.length-1)target.appendChild(document.createTextNode(' '));
+        });
+      }else if(child.nodeType===Node.ELEMENT_NODE){
+        const clone=child.cloneNode(false);target.appendChild(clone);processNodes(child,clone);
+      }
+    });
+  }
+  processNodes(tempDiv,container);
+}
+
+document.addEventListener('click',function(e){const btn=e.target.closest('.big-btn');if(!btn)return;const rect=btn.getBoundingClientRect();const ripple=document.createElement('span');ripple.className='ripple';const size=Math.max(rect.width,rect.height);ripple.style.width=ripple.style.height=size+'px';ripple.style.left=(e.clientX-rect.left-size/2)+'px';ripple.style.top=(e.clientY-rect.top-size/2)+'px';btn.appendChild(ripple);setTimeout(()=>ripple.remove(),500);});
+
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',enterApp);}else{enterApp();}
+</script>
+</body>
+</html>
